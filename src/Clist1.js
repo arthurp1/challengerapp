@@ -18,14 +18,7 @@ class ChallengeList extends Component {
   }
   render () {
     const list = this.state.posts.map( (post) => {
-      return <div key={post.id} className="thumbnail">
-                <img src={post.picture} />
-                  <div className="caption">
-                      <h3>{post.username}</h3>
-                        <p>{post.title}</p>
-                        <p>{post.backNumber}<small> backers</small></p>
-                        </div>
-                  </div>
+      return <Challenge key={post.id} {...this.state} />;
     });
 
     return <div>{list}</div>
