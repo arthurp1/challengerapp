@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Challenge from './Citem'
 import axios from 'axios'
 
 class ChallengeList extends Component {
@@ -19,7 +18,7 @@ class ChallengeList extends Component {
   render () {
     const list = this.state.posts.map( (post) => {
       return <div key={post.id} className="thumbnail">
-                <img src={post.picture} />
+                <img src={post.picture} alt={post.title} />
                   <div className="caption">
                       <h3>{post.username}</h3>
                         <p>{post.title}</p>

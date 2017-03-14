@@ -3,12 +3,11 @@ import './App.css';
 import Login from './Login'
 import Signup from './Signup'
 import ChallengeList from './Clist'
-import Navbar from './Navbar'
 
 class Router extends Component {
   constructor() {
     super()
-    this.state = {display : 3}
+    this.state = {display : 2 }
   }
   render() {
     switch (this.state.display) {

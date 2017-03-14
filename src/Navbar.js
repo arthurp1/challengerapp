@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 
 class Navbar extends Component {
+  changePage(e) {
+    console.log('change to page: ' + e)
+
+  }
   render() {
     return (
       <header className="navbar navbar-fixed-top navbar-default">
         <div className="container">
           <div className="navbar-header">
-        <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <button type="button" className="navbar-toggle collapsed">
           <span className="sr-only">Toggle navigation</span>
           <span className="icon-bar"></span>
           <span className="icon-bar"></span>
@@ -14,22 +18,15 @@ class Navbar extends Component {
         </button>
         <a className="navbar-brand" href="#">Betapp</a>
       </div>
+
       <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul className="nav navbar-nav">
-          <li className="active"><a href="#">Link <span className="sr-only">(current)</span></a></li>
-          <li><a href="#">Link</a></li>
-          <li className="dropdown">
-            <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span className="caret"></span></a>
-            <ul className="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li role="separator" className="divider"></li>
-              <li><a href="#">Separated link</a></li>
-              <li role="separator" className="divider"></li>
-              <li><a href="#">One more separated link</a></li>
-            </ul>
-          </li>
+          <li className="active" onClick={()=> this.changePage(1)}><a href="#">Signup</a></li>
+          <li><a href="#">Login</a></li>
+          <li role="separator" className="divider"></li>
+          <li><a href="#">Posts</a></li>
+          <li role="separator" className="divider"></li>
+          <li><a href="#">Profile</a></li>
         </ul>
       </div>
     </div>
@@ -37,5 +34,8 @@ class Navbar extends Component {
   )
   }
 }
-
+// <i className="fa fa-envelope"></i>
+// <i className="fa fa-globe"></i>
+// <i className="fa fa-trash"></i>
+// <i className="fa fa-search"></i>
 export default Navbar;

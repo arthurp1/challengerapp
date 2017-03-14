@@ -9,8 +9,8 @@ class App extends Component {
   }
   render() {
     return(
-    <div>
-      <Navbar/>
+    <div className="col-md-4 col-md-offset-4">
+      <Navbar />
       <Router />
     </div>
   )
