@@ -5,6 +5,7 @@ class Challenge extends Component {
     super(props)
   }
   render() {
+    console.log(this.props)
     return <div key={this.props.id} className="thumbnail">
               <img src={this.props.picture} />
                 <div className="caption">

@@ -8,7 +8,7 @@
   margin: 0 3%; }
 
 .hyper-text {
-  color: blue; }
+  color: #3398DC; }
 
 .fb-login {
   padding-top: 40px;
@@ -18,3 +18,45 @@ form {
   margin-top: 30px;
   margin-left: 5%;
   margin-right: 5%; }
+
+footer {
+  background-color: #1ABBA1 !important; }
+
+a {
+  position: relative;
+  width: 40px;
+  height: 40px; }
+
+.footerbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+  .footerbar i {
+    color: #FFFFFF;
+    font-size: 20px; }
+
+.active {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3); }
+
+.badge {
+  position: absolute;
+  top: 0px;
+  left: 30px;
+  background-color: red;
+  width: 20px;
+  height: 20px;
+  color: white;
+  margin-bottom: 20px;
+  border-radius: 50%; }
+
+.img-circle {
+  border-radius: 50%; }
+
+.user-name {
+  color: #293F54; }
+
+.karma {
+  height: 15px;
+  width: 15px; }

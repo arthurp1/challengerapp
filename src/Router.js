@@ -3,11 +3,13 @@ import './App.css';
 import Login from './Login'
 import Signup from './Signup'
 import ChallengeList from './Clist'
+// import Profile from './Profile'
+import Updates from './Updates'
 
 class Router extends Component {
   constructor() {
     super()
-    this.state = {display : 2 }
+    this.state = {display : 4 }
   }
   render() {
     switch (this.state.display) {
@@ -19,6 +21,10 @@ class Router extends Component {
         return <Signup onChangePage={ (page) => this.setState({display: page})}/>
       case 3:
         return <ChallengeList onChangePage={ (page) => this.setState({display: page})}/>
+      case 4:
+        return <Updates onChangePage={ (page) => this.setState({display: page})}/>
+      case 5:
+        return <Updates onChangePage={ (page) => this.setState({display: page})}/>
       }
   }
 }

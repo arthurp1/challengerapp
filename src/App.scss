@@ -1,3 +1,11 @@
+$font-stack:    Helvetica, sans-serif;
+$mainblue: #1ABBA1;
+$darkblue: #293F54;
+$lightblue: #3398DC;
+$grey1: #303030;
+$purple1: #A554C0;
+$text1: #FFFFFF;
+
 .App {
   text-align: center;
 }
@@ -11,7 +19,7 @@
 }
 
 .hyper-text {
-  color: blue; }
+  color: $lightblue; }
 
 .fb-login {
   padding-top: 40px;
@@ -21,3 +29,49 @@ form {
   margin-top: 30px;
   margin-left: 5%;
   margin-right: 5%; }
+
+footer {
+  background-color: $mainblue !important;
+}
+
+a {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+.footerbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  i {
+    color: $text1;
+    font-size: 20px;
+  }
+}
+.active {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255 ,255 ,255 , .3);
+}
+
+.badge {
+  position: absolute;
+  top: 0px;
+  left: 30px;
+  background-color: red;
+  width: 20px;
+  height: 20px;
+  color: white;
+  margin-bottom: 20px;
+  border-radius: 50%;
+}
+
+.img-circle {
+  border-radius: 50%;
+}
+.user-name {
+  color: $darkblue;
+}
+.karma {
+  height: 15px;
+  width: 15px; }

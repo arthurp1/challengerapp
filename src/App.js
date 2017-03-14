@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar'
+import Footer from './Footer'
 import Router from './Router'
 
 class App extends Component {
   constructor() {
     super()
-    this.state = {display : 3}
+    this.state = {display : 2}
   }
   render() {
     return(
-    <div className="col-md-4 col-md-offset-4">
-      <Navbar />
-      <Router />
+    <div>
+      <Navbar  />
+      <Router className="col-md-4 col-md-offset-4"/>
+      <Footer />
     </div>
   )
     }
