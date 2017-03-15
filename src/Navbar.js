@@ -19,7 +19,7 @@ class Navbar extends Component {
 
       <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul className="nav navbar-nav">
-          <li className="active" onClick={()=> this.changePage(1)}><a href="#">Signup</a></li>
+          <li className="active" onClick={ ()=> this.changePage(1)}><a href="#">Signup</a></li>
           <li><a href="#">Login</a></li>
           <li role="separator" className="divider"></li>
           <li><a href="#">Posts</a></li>

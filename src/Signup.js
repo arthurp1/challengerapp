@@ -25,7 +25,7 @@ class Signup extends Component {
            <h2> Sign Up </h2>
            <small className="hyper-text"> already have an account? Please login. </small>
             <img className="fb-login" src="https://ashleighmoneysaver.co.uk/images/loginwithfb.png" alt=""/>
-            <form>
+            <form className="form">
               <div className="form-group">
                 Username
                 <input type="text" className="form-control" name="username" placeholder="username" onChange={this.onInputChange} value={this.state.username}/>

@@ -14,7 +14,7 @@
   padding-top: 40px;
   width: 80%; }
 
-form {
+.form {
   margin-top: 30px;
   margin-left: 5%;
   margin-right: 5%; }
@@ -75,9 +75,6 @@ a {
 
 .showdate {
   margin-left: 40px; }
-
-input, select {
-  border: none !important; }
 
 .input-label {
   color: #293F54;

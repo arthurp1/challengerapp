@@ -4,23 +4,19 @@ import Footer from './Footer'
 import Navbar from './Navbar'
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {display : 'login' }
-  }
   render() {
     return(
       <div>
-        <Navbar nextPage={ (page) => this.setState({display: page})} />
-        <Router display={this.state.display}/>
-        <Footer nextPage={ (page) => this.setState({display: page})} />
+        <Navbar />
+        <Router className="col-md-4 col-md-offset-4" />
+        <Footer />
       </div>
     )
     }
 }
 
 
-export default App;
+export default App
 
 
 // call back from child to parent, send with props

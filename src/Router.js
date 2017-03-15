@@ -8,9 +8,9 @@ import Cnew from './Cnew'
 
 
 class Router extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {display : 'login' }
+  constructor() {
+    super()
+    this.state = {display : 'cnew' }
   }
   render() {
     switch (this.state.display) {

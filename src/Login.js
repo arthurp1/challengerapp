@@ -31,7 +31,7 @@ class Login extends Component {
       <div className="Page">
         <div className="Section">
           <h2> Sign In </h2>
-          <form>
+          <form className="form">
             <div className="form-group">
               Username
               <input type="text" className="form-control" name="username"  placeholder="username" onChange={this.onInputChange} value={this.state.username}/>
