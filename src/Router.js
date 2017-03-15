@@ -3,28 +3,29 @@ import './App.css';
 import Login from './Login'
 import Signup from './Signup'
 import ChallengeList from './Clist'
-// import Profile from './Profile'
 import Updates from './Updates'
+import Cnew from './Cnew'
+
 
 class Router extends Component {
-  constructor() {
-    super()
-    this.state = {display : 4 }
+  constructor(props) {
+    super(props)
+    this.state = {display : 'login' }
   }
   render() {
     switch (this.state.display) {
       default:
         return <Login />
-      case 1:
-        return <Login onChangePage={ (page) => this.setState({display: page})} />
-      case 2:
-        return <Signup onChangePage={ (page) => this.setState({display: page})}/>
-      case 3:
-        return <ChallengeList onChangePage={ (page) => this.setState({display: page})}/>
-      case 4:
-        return <Updates onChangePage={ (page) => this.setState({display: page})}/>
-      case 5:
-        return <Updates onChangePage={ (page) => this.setState({display: page})}/>
+      case 'login':
+        return <Login nextPage={ (page) => this.setState({display: page})} />
+      case 'signup':
+        return <Signup nextPage={ (page) => this.setState({display: page})}/>
+      case 'clist':
+        return <ChallengeList nextPage={ (page) => this.setState({display: page})}/>
+      case 'cnew':
+        return <Cnew nextPage={ (page) => this.setState({display: page})}/>
+      case 'messages':
+        return <Updates nextPage={ (page) => this.setState({display: page})}/>
       }
   }
 }

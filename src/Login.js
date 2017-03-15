@@ -15,10 +15,12 @@ class Login extends Component {
 
   logIn(event) {
     event.preventDefault()
-    this.setState( { display: 2 } )
+    console.log('next page')
+    console.log(this.props)
+    this.props.nextPage('clist')
     if (this.state.username === 'Arthur' && this.state.password === 'admin') {
       console.log('login success')
-      this.props.onChangePage(2)
+      this.props.nextPage('clist')
     } else {
       console.log('login false')
     }

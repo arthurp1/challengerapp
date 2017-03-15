@@ -8,7 +8,7 @@ class Footer extends Component {
     return (
       <footer className="navbar navbar-fixed-bottom navbar-default">
         <ul className="nav navbar-nav footerbar">
-          <li><a href="#" className="active"><i className="fa fa-th-large"></i></a></li>
+          <li><div href="#" onClick={ this.props.nextPage('clist') } className="active"><i className="fa fa-th-large"></i></div></li>
           <li><a href="#"><i className="fa fa-plus-square"></i></a></li>
           <li><a href="#"><i className="fa fa-envelope"></i><span className="badge">5</span></a></li>
           <li><a href="#"><i className="fa fa-user-circle"></i></a></li>

@@ -3,21 +3,19 @@ import React, { Component } from 'react'
 class Navbar extends Component {
   changePage(e) {
     console.log('change to page: ' + e)
-
   }
   render() {
     return (
       <header className="navbar navbar-fixed-top navbar-default">
-        <div className="container">
           <div className="navbar-header">
-        <button type="button" className="navbar-toggle collapsed">
-          <span className="sr-only">Toggle navigation</span>
-          <span className="icon-bar"></span>
-          <span className="icon-bar"></span>
-          <span className="icon-bar"></span>
-        </button>
-        <a className="navbar-brand" href="#">Betapp</a>
-      </div>
+            <button type="button" className="navbar-toggle collapsed">
+              <span className="sr-only">Toggle navigation</span>
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
+              <span className="icon-bar"></span>
+            </button>
+            <a className="navbar-brand" href="#">Betapp</a>
+          </div>
 
       <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul className="nav navbar-nav">
@@ -29,13 +27,8 @@ class Navbar extends Component {
           <li><a href="#">Profile</a></li>
         </ul>
       </div>
-    </div>
   </header>
   )
   }
 }
-// <i className="fa fa-envelope"></i>
-// <i className="fa fa-globe"></i>
-// <i className="fa fa-trash"></i>
-// <i className="fa fa-search"></i>
 export default Navbar;
