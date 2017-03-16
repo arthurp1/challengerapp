@@ -7,6 +7,8 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    default:
+      console.log('no action')
     case REQUEST_USER:
       console.log('REQUEST_USER called')
       return Object.assign({}, state, {

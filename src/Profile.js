@@ -27,8 +27,8 @@ class Profile extends Component {
           <img className="img-circle" src={user.picture.large} alt={user.name.first} />
           <div className="user-name"><h3>{user.login.username}</h3> </div>
           <span className="karma"> 23 karma </span>
-          <div class="panel panel-default">
-            <div class="panel-body">
+          <div className="panel panel-default">
+            <div className="panel-body">
               Basic panel example
             </div>
           </div>

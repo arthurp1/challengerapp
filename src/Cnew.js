@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import 'react-dates/lib/css/_datepicker.css';
 
 
-class Ccreate extends Component {
+class Cnew extends Component {
   constructor(props) {
     super(props)
     this.state = { title: '', password: '', date: '', focused: ''}
@@ -74,10 +74,6 @@ class Ccreate extends Component {
                     </select>
                   </div>
             </div>
-
-
-
-
               <button onClick={this.signUp} className="btn btn-default">Challenge Accepted!</button>
           </form>
             </div>
@@ -87,4 +83,4 @@ class Ccreate extends Component {
   }
 }
 
-export default Ccreate
+export default Cnew

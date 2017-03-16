@@ -4,12 +4,20 @@ import Footer from './Footer'
 import Navbar from './Navbar'
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = { display : 'login' }
+    this.goToPage = this.goToPage.bind(this)
+  }
+  goToPage(page) {
+    this.setState({ display: page })
+  }
   render() {
     return(
         <div>
-          <Navbar />
-          <Router className="col-md-4 col-md-offset-4" />
-          <Footer />
+          <Navbar onNavigate={ this.goToPage } active={ this.state.display } />
+          <Router onNavigate={ this.goToPage } renderPage={ this.state.display } />
+          <Footer onNavigate={ this.goToPage } />
         </div>
     )
     }

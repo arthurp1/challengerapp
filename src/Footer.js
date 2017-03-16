@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 
 class Footer extends Component {
-  changePage(e) {
-    console.log('change to page: ' + e)
+  changePage() {
+    console.log(this.props)
+    this.props.onNavigate('profile')
   }
   render() {
     return (
       <footer className="navbar navbar-fixed-bottom navbar-default">
         <ul className="nav navbar-nav footerbar">
-          <li><a href="#" className="active"><i className="fa fa-th-large"></i></a></li>
-          <li><a href="#"><i className="fa fa-plus-square"></i></a></li>
-          <li><a href="#"><i className="fa fa-envelope"></i><span className="badge">5</span></a></li>
-          <li><a href="#"><i className="fa fa-user-circle"></i></a></li>
+          <li><div onClick={ () => this.props.onNavigate('clist')} className="active"><i className="fa fa-th-large"></i></div></li>
+          <li><div onClick={ () => this.props.onNavigate('cnew')}> <i className="fa fa-plus-square"></i></div></li>
+          <li><div onClick={ () => this.props.onNavigate('updates')}> <i className="fa fa-envelope"></i><span className="badge">5</span></div></li>
+          <li><div onClick={ () => this.props.onNavigate('profile')}><i className="fa fa-user-circle"></i></div></li>
         </ul>
   </footer>
   )

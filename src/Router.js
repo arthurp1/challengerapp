@@ -3,30 +3,25 @@ import './App.css';
 import Login from './Login'
 import Signup from './Signup'
 import ChallengeList from './ChallengeList'
-import Updates from './Updates'
-import ChallengeCreate from './Cnew'
+import Cnew from './Cnew'
 import Profile from './Profile'
 
 
 class Router extends Component {
-  constructor() {
-    super()
-    this.state = {display : 'clist' }
-  }
   render() {
-    switch (this.state.display) {
+    switch (this.props.renderPage) {
       default:
         return <Login />
       case 'login':
-        return <Login nextPage={ (page) => this.setState({display: page})} />
+        return <Login nextPage={this.props.onNavigate} />
       case 'signup':
-        return <Signup nextPage={ (page) => this.setState({display: page})}/>
+        return <Signup nextPage={this.props.onNavigate} />
       case 'clist':
-        return <ChallengeList nextPage={ (page) => this.setState({display: page})}/>
+        return <ChallengeList nextPage={this.props.onNavigate} />
       case 'cnew':
-        return <ChallengeCreate nextPage={ (page) => this.setState({display: page})}/>
+        return <Cnew nextPage={this.props.onNavigate} />
       case 'profile':
-        return <Profile nextPage={ (page) => this.setState({display: page})}/>
+        return <Profile nextPage={this.props.onNavigate} />
       }
   }
 }
