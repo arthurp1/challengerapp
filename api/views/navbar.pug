@@ -1,0 +1,42 @@
+
+style
+	include navbar.css
+
+if userId  
+	div(class="navbar")
+		ul
+			li
+				div(class="dropdown")
+					img(src="images/menuIcon.png" id="dropdown-icon")
+					div(class="dropdown-content")
+						a(href="viewmessages" ) messages 
+						a(href="viewmessagesofuser") own messages 
+						a(href="viewfollowed")  followed
+						a(href="viewfollowers") followers
+						a(href="postmessage") post message
+						a(href="search") search user
+						a(href="searchpost") search post
+			li
+				a(href="home") home
+			li
+				a(href="viewmessages") all messages
+		ul(class="in-out")
+			li
+				a(href="logout") logout
+			li
+				a(href="profile")  profile				
+
+else 
+	div(class="navbar")
+		ul
+			li
+				a(href="home") home
+			li
+				a(href="viewmessages") all messages
+
+		ul(class="in-out")
+			li
+				a(href="login") login
+			li |
+			li
+				a(href="signup") signup
