@@ -4,13 +4,14 @@ import Login from './Login'
 import Signup from './Signup'
 import ChallengeList from './Clist'
 import Updates from './Updates'
-import Cnew from './Cnew'
+import ChallengeCreate from './Cnew'
+import Profile from './Profile'
 
 
 class Router extends Component {
   constructor() {
     super()
-    this.state = {display : 'cnew' }
+    this.state = {display : 'profile' }
   }
   render() {
     switch (this.state.display) {
@@ -23,9 +24,9 @@ class Router extends Component {
       case 'clist':
         return <ChallengeList nextPage={ (page) => this.setState({display: page})}/>
       case 'cnew':
-        return <Cnew nextPage={ (page) => this.setState({display: page})}/>
-      case 'messages':
-        return <Updates nextPage={ (page) => this.setState({display: page})}/>
+        return <ChallengeCreate nextPage={ (page) => this.setState({display: page})}/>
+      case 'profile':
+        return <Profile nextPage={ (page) => this.setState({display: page})}/>
       }
   }
 }

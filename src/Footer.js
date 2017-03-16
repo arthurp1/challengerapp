@@ -13,7 +13,7 @@ class Footer extends Component {
           <li><a href="#"><i className="fa fa-envelope"></i><span className="badge">5</span></a></li>
           <li><a href="#"><i className="fa fa-user-circle"></i></a></li>
         </ul>
-      </footer>
+  </footer>
   )
   }
 }

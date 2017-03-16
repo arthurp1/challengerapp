@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { fetchUser } from './actions/index'
+import { bindActionCreators } from 'redux';
 
 class Profile extends Component {
   constructor(props) {
@@ -10,11 +11,14 @@ class Profile extends Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(fetchUser())
+    let that = this
+    this.props.fetchUser().then(function(user) {
+      console.log(user)
+      that.setState({ user: user.payload.data.results})
+    })
   }
 
   render() {
-    console.log('Profile rendered')
     const profile = this.state.user.map( (user) => {
       console.log('this data came back:')
       console.log(user)
@@ -36,8 +40,14 @@ class Profile extends Component {
    }
 }
 
-function mapStateToProps(state) {
-  return  { user: state.user }
-}
 
-export default connect(mapStateToProps)(Profile);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchUser }, dispatch);
+}
+export default connect(null, mapDispatchToProps)(Profile);
+
+// function mapStateToProps(state) {
+//   return  { user: state.user }
+// }
+
+// export default connect(mapStateToProps)(Profile);

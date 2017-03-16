@@ -6,15 +6,14 @@ import Navbar from './Navbar'
 class App extends Component {
   render() {
     return(
-      <div>
-        <Navbar />
-        <Router className="col-md-4 col-md-offset-4" />
-        <Footer />
-      </div>
+        <div>
+          <Navbar />
+          <Router className="col-md-4 col-md-offset-4" />
+          <Footer />
+        </div>
     )
     }
 }
-
 
 export default App
 

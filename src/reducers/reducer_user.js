@@ -8,15 +8,17 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case REQUEST_USER:
+      console.log('REQUEST_USER called')
       return Object.assign({}, state, {
         fetching: true
       });
     case RECEIVE_USER:
       // return state.concat([action.user])
       // return [ action.user, ...state ];
+      console.log('RECEIVE_USER called')
       return Object.assign({}, state, {
         fetching: false,
-        user: action.user
+        payload: action.payload.data
       })
   }
   return state;

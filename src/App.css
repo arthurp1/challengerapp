@@ -31,10 +31,9 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-between; }
-
-.footerbar i {
-  color: #FFFFFF;
-  font-size: 20px; }
+  .footerbar i {
+    color: #FFFFFF;
+    font-size: 20px; }
 
 .active {
   position: absolute;

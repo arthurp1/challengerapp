@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "materialize": "^1.0.0",
     "moment": "^2.17.1",
     "node-sass": "^4.5.0",
     "react": "^15.4.2",
@@ -15,7 +16,8 @@
     "react-dates": "^8.2.0",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "redux-promise": "^0.5.3"
   },
   "scripts": {
     "build-css": "node-sass src/ -o src/",
