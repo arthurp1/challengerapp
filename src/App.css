@@ -1,5 +1,24 @@
-nav {
-  background-color: #293F54 !important; }
+body {
+  font-family: "Roboto", sans-serif; }
+
+.nav-header {
+  background-color: #293F54 !important;
+  color: white !important; }
+
+.logo {
+  font-weight: bold;
+  font-size: 18px; }
+
+.nav-footer {
+  background-color: #293F54 !important;
+  position: fixed !important;
+  bottom: 0px !important; }
+
+.btn-custom {
+  background-color: #1ABBA1 !important; }
+
+.title-center {
+  text-align: center; }
 
 .App {
   text-align: center; }
@@ -8,7 +27,7 @@ nav {
   text-align: center; }
 
 .Section {
-  margin: 0 3%; }
+  margin: 0 5%; }
 
 .hyper-text {
   color: #3398DC; }
@@ -52,6 +71,6 @@ nav {
   color: #293F54;
   font-size: 16px; }
 
-.footer-nav {
-  position: fixed !important;
-  bottom: 0px !important; }
+@media screen and (min-width: 700px) {
+  .Page {
+    margin: 0 30%; } }

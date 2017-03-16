@@ -21,7 +21,7 @@ class ChallengeList extends Component {
       return <Challenge key={post.id} {...post} />
     });
 
-    return <div>{list}</div>
+    return <div className="Page">{list}</div>
     }
 }
 

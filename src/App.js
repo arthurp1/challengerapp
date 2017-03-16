@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Router from './Router'
-import Footer from './Footer'
-import Navbar from './Navbar'
+import Footer from './components/Footer'
+import Navbar from './components/Navbar'
 
 class App extends Component {
   constructor() {
@@ -16,9 +16,7 @@ class App extends Component {
     return(
         <div>
           <Navbar onNavigate={ this.goToPage } active={ this.state.display } />
-          <main>
-            <Router onNavigate={ this.goToPage } renderPage={ this.state.display } />
-          </main>
+          <Router id="Page" onNavigate={ this.goToPage } renderPage={ this.state.display } />
           <Footer onNavigate={ this.goToPage } active={ this.state.display } />
         </div>
     )

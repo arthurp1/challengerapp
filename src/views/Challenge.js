@@ -8,7 +8,7 @@ class Challenge extends Component {
     console.log('Props of Challenge')
     let post = this.props
     return <div key={post.id} className="thumbnail">
-              <img src={post.picture} alt={post.title} onClick={this.backProject(1)}/>
+              <img src='https://placeimg.com/400/225/people' alt={post.title} onClick={this.backProject(1)}/>
                 <div className="caption">
                     <h3>{post.username}</h3>
                       <p>{post.title}</p>

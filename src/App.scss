@@ -1,16 +1,40 @@
-$font-stack:    Helvetica, sans-serif;
+$font-stack:   'Roboto', sans-serif;
 $mainblue: #1ABBA1;
 $darkblue: #293F54;
 $lightblue: #3398DC;
 $grey1: #303030;
 $purple1: #A554C0;
 $text1: #FFFFFF;
+$primary: #00838f;
 
-
-nav {
-  background-color: $darkblue !important;
+body {
+  font-family: $font-stack;
 }
 
+.nav-header {
+  background-color: $darkblue !important;
+  color: white !important;
+}
+
+.logo{
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.nav-footer {
+  background-color: $darkblue !important;
+  position: fixed !important;
+  bottom: 0px !important;
+}
+
+.btn-custom {
+  background-color: $mainblue !important;
+}
+
+// Navbar
+.title-center {
+  text-align: center;
+}
 .App {
   text-align: center;
 }
@@ -20,17 +44,17 @@ nav {
 }
 
 .Section {
-  margin: 0 3%;
+  margin: 0 5%;
 }
 
 .hyper-text {
-  color: $lightblue; }
+  color: $lightblue;
+}
 
 .fb-login {
   padding-top: 40px;
-  width: 80%; }
-
-
+  width: 80%;
+}
 
 .ul-flex {
   display: flex;
@@ -71,11 +95,9 @@ nav {
   font-size: 16px;
 }
 
-.footer-nav {
-  position: fixed !important;
-  bottom: 0px !important;
-}
 
-@media screen and (max-width: 480px) {
-
+@media screen and (min-width: 700px) {
+    .Page {
+      margin: 0 30%;
+    }
 }

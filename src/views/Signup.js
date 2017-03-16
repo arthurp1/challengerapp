@@ -17,11 +17,10 @@ class Signup extends Component {
       firstName: this.state.firstname,
       lastName: this.state.lastname,
       email: this.state.email,
-      password: this.state.password,
-      passwordCheck: this.state.passwordcheck
+      password: this.state.password
     }
     console.log(signupform)
-    const that = this
+    // const that = this
     axios.post("http://localhost:3001/signuphandler", signupform)
     .then(function(data) {
       console.log(data.err)
@@ -36,30 +35,25 @@ class Signup extends Component {
       <div className="App">
         <div className="Page">
           <div className="Section">
-           <h2> Sign Up </h2>
+           <h3> Sign Up </h3>
            <small className="hyper-text"> already have an account? Please login. </small>
             <img className="fb-login" src="https://ashleighmoneysaver.co.uk/images/loginwithfb.png" alt=""/>
             <form className="form">
-              <div className="form-group">
-                Firstname
-                <input type="text" className="form-control" name="firstname" placeholder="First name" onChange={this.onInputChange} value={this.state.firstname}/>
+              <div className="input-field">
+                First name
+                <input type="text" className="validate" name="firstname" placeholder="First name" onChange={this.onInputChange} value={this.state.firstname}/>
               </div>
-              <div className="form-group">
-                Lastname
-                <input type="text" className="form-control" name="lastname" placeholder="Last name" onChange={this.onInputChange} value={this.state.lastname}/>
+              <div className="input-field">
+                First name
+                <input type="text" className="validate" name="firstname" placeholder="First name" onChange={this.onInputChange} value={this.state.firstname}/>
               </div>
-              <div className="form-group">
+              <div className="input-field">
                 Email
-                <input type="text" className="form-control" name="email" placeholder="Email" onChange={this.onInputChange} value={this.state.email}/>
+                <input type="text" className="validate" name="email" placeholder="Email" onChange={this.onInputChange} value={this.state.email}/>
               </div>
-              <div className="form-group">
+              <div className="input-field">
                 Password
-                <input type="password" className="form-control" name="password" placeholder="Password" value={this.state.password}
-          onChange={this.onInputChange} />
-              </div>
-              <div className="form-group">
-                Password again
-                <input type="password" className="form-control" name="passwordcheck" placeholder="Password" value={this.state.passwordcheck}
+                <input type="password" className="validate" name="password" placeholder="Password" value={this.state.password}
           onChange={this.onInputChange} />
               </div>
               <button onClick={this.signUp} className="btn btn-default">Signup</button>
