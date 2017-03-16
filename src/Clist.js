@@ -4,7 +4,7 @@ import axios from 'axios'
 class ChallengeList extends Component {
   constructor(props) {
     super(props)
-    this.state = { posts: []}
+    this.state = { posts: [] }
     this.componentDidMount = this.componentDidMount.bind(this)
   }
   componentDidMount() {
@@ -15,16 +15,19 @@ class ChallengeList extends Component {
       that.setState({ posts: result.data})
     })
   }
+  backProject(amount) {
+  }
   render () {
     const list = this.state.posts.map( (post) => {
       return <div key={post.id} className="thumbnail">
-                <img src={post.picture} alt={post.title} />
+                <img src={post.picture} alt={post.title} onClick={backProject(1)}/>
                   <div className="caption">
                       <h3>{post.username}</h3>
                         <p>{post.title}</p>
                         <p>{post.backNumber}<small> backers</small></p>
-                        </div>
                   </div>
+                  <button className="btn btn-default" backed={post} onClick={backProject(1)}>Back Project</button>
+            </div>
     });
 
     return <div>{list}</div>

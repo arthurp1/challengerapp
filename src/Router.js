@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Login from './Login'
 import Signup from './Signup'
-import ChallengeList from './Clist'
+import ChallengeList from './ChallengeList'
 import Updates from './Updates'
 import ChallengeCreate from './Cnew'
 import Profile from './Profile'
@@ -11,7 +11,7 @@ import Profile from './Profile'
 class Router extends Component {
   constructor() {
     super()
-    this.state = {display : 'profile' }
+    this.state = {display : 'clist' }
   }
   render() {
     switch (this.state.display) {
