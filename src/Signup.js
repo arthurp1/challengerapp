@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 
 class Signup extends Component {
   constructor(props) {
@@ -11,12 +12,25 @@ class Signup extends Component {
   onInputChange(event) {
     this.setState( { [event.target.name]: event.target.value })
   }
-
-  signUp(event) {
-    event.preventDefault()
-    this.props.onChangePage(3)
+  signUp() {
+    let signupform = {
+      firstName: this.state.firstname,
+      lastName: this.state.lastname,
+      email: this.state.email,
+      password: this.state.password,
+      passwordCheck: this.state.passwordcheck
+    }
+    console.log(signupform)
+    const that = this
+    axios.post("http://localhost:3001/signuphandler", signupform)
+    .then(function(data) {
+      console.log(data.err)
+        // if error reload page
+        // (data.error) ? that.setState({ display: 'signup' })
+        // //otherwise redirect to signin
+        // : that.setState({ display: 'clist' })
+        })
   }
-
   render() {
     return (
       <div className="App">
@@ -27,12 +41,25 @@ class Signup extends Component {
             <img className="fb-login" src="https://ashleighmoneysaver.co.uk/images/loginwithfb.png" alt=""/>
             <form className="form">
               <div className="form-group">
-                Username
-                <input type="text" className="form-control" name="username" placeholder="username" onChange={this.onInputChange} value={this.state.username}/>
+                Firstname
+                <input type="text" className="form-control" name="firstname" placeholder="First name" onChange={this.onInputChange} value={this.state.firstname}/>
+              </div>
+              <div className="form-group">
+                Lastname
+                <input type="text" className="form-control" name="lastname" placeholder="Last name" onChange={this.onInputChange} value={this.state.lastname}/>
+              </div>
+              <div className="form-group">
+                Email
+                <input type="text" className="form-control" name="email" placeholder="Email" onChange={this.onInputChange} value={this.state.email}/>
               </div>
               <div className="form-group">
                 Password
                 <input type="password" className="form-control" name="password" placeholder="Password" value={this.state.password}
+          onChange={this.onInputChange} />
+              </div>
+              <div className="form-group">
+                Password again
+                <input type="password" className="form-control" name="passwordcheck" placeholder="Password" value={this.state.passwordcheck}
           onChange={this.onInputChange} />
               </div>
               <button onClick={this.signUp} className="btn btn-default">Signup</button>

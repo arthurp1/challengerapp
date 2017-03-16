@@ -12,6 +12,7 @@ class ChallengeList extends Component {
     var that = this
     axios.get("https://api.myjson.com/bins/uhac7")
     .then(function(result) {
+      console.log(result)
       that.setState({ posts: result.data})
     })
   }

@@ -16,8 +16,10 @@ class App extends Component {
     return(
         <div>
           <Navbar onNavigate={ this.goToPage } active={ this.state.display } />
-          <Router onNavigate={ this.goToPage } renderPage={ this.state.display } />
-          <Footer onNavigate={ this.goToPage } />
+          <main>
+            <Router onNavigate={ this.goToPage } renderPage={ this.state.display } />
+          </main>
+          <Footer onNavigate={ this.goToPage } active={ this.state.display } />
         </div>
     )
     }
