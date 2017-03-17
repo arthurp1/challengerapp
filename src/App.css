@@ -1,5 +1,28 @@
-nav {
-  background-color: #293F54 !important; }
+body {
+  font-size: 0.9rem;
+  font-family: "Roboto", sans-serif; }
+
+.nav-header {
+  background-color: #293F54 !important;
+  color: white !important; }
+
+.logo {
+  font-weight: bold;
+  font-size: 18px; }
+
+.nav-footer {
+  background-color: #F2F2F2 !important;
+  position: fixed !important;
+  bottom: 0px !important; }
+
+.nav-footer i {
+  color: #8D8D92 !important; }
+
+.btn-custom {
+  background-color: #1ABBA1 !important; }
+
+.title-center {
+  text-align: center; }
 
 .App {
   text-align: center; }
@@ -8,7 +31,7 @@ nav {
   text-align: center; }
 
 .Section {
-  margin: 0 3%; }
+  margin: 0 5%; }
 
 .hyper-text {
   color: #3398DC; }
@@ -19,10 +42,14 @@ nav {
 
 .ul-flex {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  margin: 0 5%; }
 
 .ul-flex li {
   margin: 0 10px; }
+
+.ul-flex li:hover {
+  border-bottom: pink !important; }
 
 .img-circle {
   border-radius: 50%; }
@@ -52,6 +79,9 @@ nav {
   color: #293F54;
   font-size: 16px; }
 
-.footer-nav {
-  position: fixed !important;
-  bottom: 0px !important; }
+.card-content {
+  text-align: left; }
+
+@media screen and (min-width: 700px) {
+  .Page {
+    margin: 0 30%; } }

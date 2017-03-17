@@ -7,8 +7,7 @@ class Footer extends Component {
   }
   render() {
     return (
-
-      <nav className="footer-nav">
+      <nav className="nav-footer">
         <div className="nav-wrapper">
           <ul className="nav-mobile ul-flex">
             <li><a onClick={ () => this.props.onNavigate('clist')} className="active"><i className="small material-icons">trending_up</i></a></li>

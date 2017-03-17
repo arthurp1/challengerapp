@@ -3,12 +3,11 @@ import React, { Component } from 'react'
 class Navbar extends Component {
   render() {
     return (
-      <header className="navbar-fixed">
-        <nav>
+      <header className="navbar">
+        <nav className="nav-header">
         <div className="nav-wrapper">
-          <ul className="nav-mobile ul-flex">
-            <a onClick={ () => this.props.onNavigate('signup')}> BetApp</a>
-            <a> <i className="title-center">{this.props.active}</i></a>
+          <ul className="nav-mobile ul-flex title-center">
+            <a className="logo" onClick={ () => this.props.onNavigate('signup')}> BE₸₸ER</a>
           </ul>
         </div>
     </nav>
@@ -19,3 +18,4 @@ class Navbar extends Component {
 export default Navbar;
 
 {/* <a onClick={() => this.props.onNavigate('clist')} className="brand-logo">BetApp</a> */}
+{/* <div className="title">{this.props.active}</div> */}

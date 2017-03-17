@@ -1,16 +1,48 @@
-$font-stack:    Helvetica, sans-serif;
+$font-stack:   'Roboto', sans-serif;
 $mainblue: #1ABBA1;
 $darkblue: #293F54;
 $lightblue: #3398DC;
 $grey1: #303030;
 $purple1: #A554C0;
 $text1: #FFFFFF;
+$primary: #00838f;
 
-
-nav {
-  background-color: $darkblue !important;
+body {
+  font-size: 0.9rem;
+  font-family: $font-stack;
 }
 
+h1,h2,h3 {
+
+}
+.nav-header {
+  background-color: $darkblue !important;
+  color: white !important;
+}
+
+.logo{
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.nav-footer {
+  background-color: #F2F2F2 !important;
+  position: fixed !important;
+  bottom: 0px !important;
+}
+
+.nav-footer i {
+    color: #8D8D92 !important;
+}
+
+.btn-custom {
+  background-color: $mainblue !important;
+}
+
+// Navbar
+.title-center {
+  text-align: center;
+}
 .App {
   text-align: center;
 }
@@ -20,24 +52,29 @@ nav {
 }
 
 .Section {
-  margin: 0 3%;
+  margin: 0 5%;
 }
 
 .hyper-text {
-  color: $lightblue; }
+  color: $lightblue;
+}
 
 .fb-login {
   padding-top: 40px;
-  width: 80%; }
-
-
+  width: 80%;
+}
 
 .ul-flex {
   display: flex;
   justify-content: space-between;
+  margin: 0 5%;
 }
 .ul-flex li {
-  margin: 0 10px
+  margin: 0 10px;
+}
+
+.ul-flex li:hover {
+  border-bottom: pink !important;
 }
 .img-circle {
   border-radius: 50%;
@@ -71,11 +108,11 @@ nav {
   font-size: 16px;
 }
 
-.footer-nav {
-  position: fixed !important;
-  bottom: 0px !important;
+.card-content {
+  text-align: left;
 }
-
-@media screen and (max-width: 480px) {
-
+@media screen and (min-width: 700px) {
+    .Page {
+      margin: 0 30%;
+    }
 }
