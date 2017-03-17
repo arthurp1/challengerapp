@@ -8,9 +8,13 @@ $text1: #FFFFFF;
 $primary: #00838f;
 
 body {
+  font-size: 0.9rem;
   font-family: $font-stack;
 }
 
+h1,h2,h3 {
+
+}
 .nav-header {
   background-color: $darkblue !important;
   color: white !important;
@@ -22,9 +26,13 @@ body {
 }
 
 .nav-footer {
-  background-color: $darkblue !important;
+  background-color: #F2F2F2 !important;
   position: fixed !important;
   bottom: 0px !important;
+}
+
+.nav-footer i {
+    color: #8D8D92 !important;
 }
 
 .btn-custom {
@@ -59,9 +67,14 @@ body {
 .ul-flex {
   display: flex;
   justify-content: space-between;
+  margin: 0 5%;
 }
 .ul-flex li {
-  margin: 0 10px
+  margin: 0 10px;
+}
+
+.ul-flex li:hover {
+  border-bottom: pink !important;
 }
 .img-circle {
   border-radius: 50%;
@@ -95,7 +108,9 @@ body {
   font-size: 16px;
 }
 
-
+.card-content {
+  text-align: left;
+}
 @media screen and (min-width: 700px) {
     .Page {
       margin: 0 30%;
