@@ -17,8 +17,7 @@ class Signup extends Component {
       firstName: this.state.firstname,
       lastName: this.state.lastname,
       email: this.state.email,
-      password: this.state.password,
-      passwordCheck: this.state.passwordcheck
+      password: this.state.password
     }
     console.log(signupform)
     // const that = this
@@ -45,8 +44,8 @@ class Signup extends Component {
                 <input type="text" className="validate" name="firstname" placeholder="First name" onChange={this.onInputChange} value={this.state.firstname}/>
               </div>
               <div className="input-field">
-                Last name
-                <input type="text" className="validate" name="lastname" placeholder="Last name" onChange={this.onInputChange} value={this.state.lastname}/>
+                First name
+                <input type="text" className="validate" name="firstname" placeholder="First name" onChange={this.onInputChange} value={this.state.firstname}/>
               </div>
               <div className="input-field">
                 Email
@@ -55,11 +54,6 @@ class Signup extends Component {
               <div className="input-field">
                 Password
                 <input type="password" className="validate" name="password" placeholder="Password" value={this.state.password}
-          onChange={this.onInputChange} />
-              </div>
-              <div className="input-field">
-                Password Check
-                <input type="password" className="validate" name="passwordcheck" placeholder="Password" value={this.state.passwordcheck}
           onChange={this.onInputChange} />
               </div>
               <button onClick={this.signUp} className="btn btn-default">Signup</button>

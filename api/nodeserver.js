@@ -16,10 +16,10 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 let User = db.User
 let Post = db.Post
 let Comment = db.Comment
-let sequelize = db.sequelize	
+let sequelize = db.sequelize
 
 //necessary?
-app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.set('view engine', 'pug');
@@ -103,7 +103,7 @@ app.post('/signuphandler', function(req, res){
 		res.send(false)
 	}
 
-	bcrypt.hash(password, null, null, function(err, hash){ 
+	bcrypt.hash(password, null, null, function(err, hash){
 		password = hash
 		return password
 	})
@@ -126,9 +126,9 @@ app.post('/signuphandler', function(req, res){
 			        pass: process.env.GMAIL_PASSWORD
 			    }
 			});
-			
-			//this validation hash is the same for every user. 	
-			let activate = bcrypt.hash("activate", null, null, function(err, hash){ 
+
+			//this validation hash is the same for every user.
+			let activate = bcrypt.hash("activate", null, null, function(err, hash){
 				return hash
 			})
 
@@ -154,7 +154,7 @@ app.post('/signuphandler', function(req, res){
 	})
 	.catch(function(e) {
 		console.log(e)
-	})	
+	})
 })
 //test
 
@@ -209,7 +209,7 @@ app.post('/loginhandler', function(req, res){
 			req.session.userId = userRow.id
 			req.session.loggedIn = true
 			req.session.firstName = userRow.firstName
-			res.redirect('/viewmessagesofuser')		
+			res.redirect('/viewmessagesofuser')
 		})
 		.catch(function(e){
 			console.log(e)
@@ -280,7 +280,7 @@ app.get('/viewmessages', function(req, res) {
 	let allPosts;
 	let userId = req.session.userId
 
-	Post.findAll({include: [User, 
+	Post.findAll({include: [User,
 		{
 			model: Comment,
 			include: [
@@ -298,26 +298,26 @@ app.get('/viewmessagesofuser', function(req, res) {
 	if(req.session.userId === undefined){
 		res.redirect("login")
 	}
-	let userId = req.session.userId //session variable	
-	
+	let userId = req.session.userId //session variable
+
 	console.log("THIS IS THE FOLLOWED ID: " + req.query.followedId)
 	//Same route is used to view posts of followed
 	if(req.query.followedId != undefined) {
 		userId = req.query.followedId
-	}	
+	}
 	let allPosts;
 
-	Post.findAll( 
+	Post.findAll(
 		{
 			where: {userId: userId},
-			include: [User, 
+			include: [User,
 				{
 					model: Comment,
 					include: [
 						User
 					]
 				}
-			]}	
+			]}
 	)
 	.then(function(posts){
 		res.render("showallmessages2", {posts, userId})
@@ -330,7 +330,7 @@ app.post("/followhandler", function(req, res) {
 
 	User.findById(userId).then( currentUser => {
 	    User.findById(followId).then( follows => {
-	        currentUser.addFollowed(follows); 
+	        currentUser.addFollowed(follows);
 	    });
 	});
 })
@@ -351,14 +351,14 @@ app.post("/unfollowhandler", function(req, res) {
 
 app.get("/viewfollowed", function(req, res) {
 	let userId = req.session.userId
-	
+
 	User.findById(userId)
 	.then( user => {
 		user.getFolloweds()
 		.then( followeds => {
 			res.render("showfollowed", {followeds, userId})
-		})		
-	})	
+		})
+	})
 })
 
 app.get("/viewfollowers", function(req, res) {
@@ -369,7 +369,7 @@ app.get("/viewfollowers", function(req, res) {
 		user.getFollowers()
 		.then( followers => {
 			res.render("showfollowers", {followers, userId})
-		})		
+		})
 	})
 })
 
@@ -404,8 +404,8 @@ app.post("/searchposthandler", function(req, res) {
 	let title = req.body.typed
 	let userId = req.session.userId
 
-	Post.findAll({where: {title: title}, 
-		include: [User, 
+	Post.findAll({where: {title: title},
+		include: [User,
 			{
 				model: Comment,
 				include: [
@@ -452,7 +452,7 @@ function searchUser(users, typed) {
 	for(let i = 0; i <= (users.length - 1); i++) {
 		let fullName =  users[i].firstName + users[i].lastName
 		let partialName = fullName.slice(0, typed.length)
-		
+
 		if(partialName === typed){
 			return (users[i].firstName + " " + users[i].lastName)
 		}
@@ -465,7 +465,7 @@ function searchPost(posts, typed) {
 	for(let i = 0; i <= (posts.length - 1); i++) {
 		let title =  posts[i].title
 		let partialName = title.slice(0, typed.length)
-		
+
 		if(partialName === typed){
 			return (posts[i].title)
 		}
