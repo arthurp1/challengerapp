@@ -30,6 +30,13 @@ small {
   font-size: 0.9rem;
 }
 
+.deadline {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+
 .logo{
   font-weight: bold;
   font-size: 18px;

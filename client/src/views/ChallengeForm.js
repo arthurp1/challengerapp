@@ -19,14 +19,19 @@ class Cnew extends Component {
   createChallenge(event) {
     event.preventDefault()
     const that = this
+
     let challengeinput = {
       userId: this.state.userid,
+      title: this.state.title,
+      media: this.state.media,
       dueDate: this.state.duedate,
       dueTime: this.state.duetime,
-      dueInterval: this.state.interval,
-      category: this.state.category,
-      media: this.state.media
+      minStake: this.state.minstake,
+      tags: this.state.tags
     }
+
+    console.log('challengeinput')
+    console.log(challengeinput)
     axios.post("/createchallenge", challengeinput)
     .then(function(result) {
         result.data.success ? that.props.nextPage('clist') : that.setState({ error: result.error })
@@ -39,53 +44,42 @@ class Cnew extends Component {
       <div className="Page">
         <div className="Section">
           <h3> New Challenge </h3>
-
             <form className="form">
-              <div className="form-group">
-                  <input type="text" className="form-control" name="title" placeholder="Challenge title.." onChange={this.onInputChange} value={this.state.title} />
+
+              <div className="input-field">
+                <input type="text" className="form-control" name="title" placeholder="Challenge title.." onChange={this.onInputChange} value={this.state.title} />
               </div>
-              <div className="form-group">
-                <input type="file" name="pic" accept="image/*" className="form-control" />
+
+              <div className="input-field">
+                <div className="input-label">
+                  <div className="large-label">Upload</div>
+                </div>
+                <input type="file" name="media" accept="image/*" className="form-control" value={this.state.media} onChange={this.onInputChange} />
               </div>
-            <div className="showtime form-group group-inline">
-              <div className="input-label">
-                <div className="large-label">Showtime</div>
+
+
+              <div className="input-field">
+                <div className="input-label">Deadline</div>
+              <div className="deadline">
+                <input className="duedate half-page" name="duedate" type="date" value={this.state.duedate} onChange={this.onInputChange} />
+                <input className="duetime" name="duetime" type="time" value={this.state.duetime} onChange={this.onInputChange} />
               </div>
-                <input className="showdate" name="show-date" type="date" />
-                <select className="showtime" name="show-time">
-                  <option>09:00</option>
-                  <option>10:00</option>
-                  <option>11:00</option>
-                  <option>12:00</option>
-                  <option>13:00</option>
-                  <option>14:00</option>
-                </select>
             </div>
 
-
-
-              <div className="min-stake form-group group-inline">
-                  <div className="input-label">Stake Minimum<small className="subtext">Total stakes in the game</small> </div>
-                  <div className="input-group">
-                      <div className="input-group-addon">$</div>
-                      <input type="text" className="form-control" id="inputamount" placeholder="Amount" />
-                      <div className="input-group-addon">per backer</div>
-                  </div>
-              </div>
-
-            <div className="min-stake form-group group-inline">
-                <div className="input-label">Minimum Stake <small className="subtext">Minimum amount backed 24h before showtime </small> </div>
-                  <div className="input-group">
-                    <select name="minstack" className="form-control">
-                      <option>$1</option>
-                      <option>$3</option>
-                      <option>$5</option>
-                      <option>$10</option>
-                      <option>$20</option>
-                      <option>$30</option>
-                    </select>
-                  </div>
+            <div className="input-field">
+              <div className="input-label">Minimum Backers</div>
+            <div className="minstake">
+              <input name="minstake" type="text" value={this.state.minstake} onChange={this.onInputChange} />
             </div>
+          </div>
+
+          <div className="input-field">
+            Tags
+            <div className="input-label"></div>
+          <div className="tags">
+            <input name="tags" type="text" value={this.state.tags} onChange={this.onInputChange} />
+          </div>
+        </div>
               <button onClick={this.createChallenge} className="btn btn-default">Challenge Accepted!</button>
           </form>
             </div>
