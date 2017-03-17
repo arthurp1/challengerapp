@@ -90,9 +90,14 @@ app.post('/uploadhandler', upload.single("profilepic"), function (req,res) {
 
   console.log(tmp_path)
 })
-
+app.get('/test', function (req, res) {
+	console.log(req)
+	res.send('hoi')
+})
 //Signup Handler
 app.post('/signuphandler', function(req, res){
+	console.log('request received')
+	console.log(req.body)
 	let firstName = req.body.firstName
 	let lastName = req.body.lastName
 	let email = req.body.email
@@ -100,7 +105,7 @@ app.post('/signuphandler', function(req, res){
 	let passwordCheck = req.body.passwordCheck
 
 	if(password != passwordCheck) {
-		res.send(false)
+		return res.send( { error: 'Your passwords don\'t match' } )
 	}
 
 	bcrypt.hash(password, null, null, function(err, hash){
@@ -149,7 +154,7 @@ app.post('/signuphandler', function(req, res){
 			});
 		})
 		.then( function(){
-			res.send(true)
+			res.send({ success: true })
 		})
 	})
 	.catch(function(e) {
@@ -204,21 +209,20 @@ app.post('/loginhandler', function(req, res){
 		bcrypt.compare(password, userRow.password, function(err, res) {
 		})
 		.then( function() {
-			console.log("Well hello there, " + userRow.firstName)
 			//start session
 			req.session.userId = userRow.id
 			req.session.loggedIn = true
 			req.session.firstName = userRow.firstName
-			res.redirect('/viewmessagesofuser')
+			res.send({ success: true })
 		})
 		.catch(function(e){
 			console.log(e)
-			res.redirect("/login")
+			res.send( { error: 'Username or password is incorrect'} )
 		})
 	})
 	.catch(function(e) {
 		console.log(e)
-		res.end()
+		res.send( { error: 'Username or password is incorrect' })
 	})
 })
 

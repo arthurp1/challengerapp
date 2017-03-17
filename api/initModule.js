@@ -55,7 +55,7 @@ const Comment = sequelize.define('comment', {
 User.hasMany(Post)
 Post.belongsTo(User)
 
-User.hasMany(Comment) 
+User.hasMany(Comment)
 Comment.belongsTo(User)
 
 Post.hasMany(Comment)
@@ -65,7 +65,7 @@ Comment.belongsTo(Post)
 User.belongsToMany(User, {as: {singular: "Follower", plural: "Followers"}, foreignKey: "FollowerId", through: "Follower_Followeds"})
 User.belongsToMany(User, {as: {singular: "Followed", plural: "Followeds"}, foreignKey: "FollowedId", through: "Follower_Followeds"})
 
-module.exports = { 
+module.exports = {
   //Define Users
   User: User,
   //Define Posts
@@ -81,9 +81,3 @@ module.exports = {
 Optional Define Categories
 */
   //signup page
-
-
-
-
- 
-

@@ -1,0 +1,26 @@
+{
+  "name": "capp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "concurrently": "^3.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "server": "cd api && npm start",
+    "client": "cd client && npm start",
+    "start": "npm server && npm client",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arthurp1/challengerapp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arthurp1/challengerapp/issues"
+  },
+  "homepage": "https://github.com/arthurp1/challengerapp#readme"
+}

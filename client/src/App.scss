@@ -13,11 +13,21 @@ body {
 }
 
 h1,h2,h3 {
-
+  font-size: 2rem;
 }
 .nav-header {
   background-color: $darkblue !important;
   color: white !important;
+}
+
+btn-add {
+  position: absolute;
+  z-index: 10;
+}
+
+small {
+  color: $mainblue;
+  font-size: 0.9rem;
 }
 
 .logo{

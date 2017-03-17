@@ -11,9 +11,9 @@ class Footer extends Component {
         <div className="nav-wrapper">
           <ul className="nav-mobile ul-flex">
             <li><a onClick={ () => this.props.onNavigate('clist')} className="active"><i className="small material-icons">trending_up</i></a></li>
-            <li><a onClick={ () => this.props.onNavigate('cnew')}> <i className="small material-icons">library_add</i></a></li>
+            <li><a onClick={ () => this.props.onNavigate('cnew')}> <i className="small material-icons">add</i></a></li>
             <li><a onClick={ () => this.props.onNavigate('updates')}> <i className="small material-icons">email</i></a></li>
-            <li><a onClick={ () => this.props.onNavigate('profile')}> <i className="small material-icons">perm_identity</i></a></li>
+            <li><a onClick={ () => this.props.onNavigate('profile')}> <i className="small material-icons">account_circle</i></a></li>
           </ul>
         </div>
     </nav>

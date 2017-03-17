@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 // import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
+import axios from 'axios'
 
 
 class Cnew extends Component {
   constructor(props) {
     super(props)
     this.state = { title: '', password: '', date: '', focused: ''}
-    this.signUp = this.signUp.bind(this);
+    this.createChallenge = this.createChallenge.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
   }
 
@@ -15,22 +16,33 @@ class Cnew extends Component {
     this.setState( { [event.target.name]: event.target.value })
   }
 
-  signUp(event) {
+  createChallenge(event) {
     event.preventDefault()
-    this.props.onChangePage(3)
+    const that = this
+    let challengeinput = {
+      userId: this.state.userid,
+      dueDate: this.state.duedate,
+      dueTime: this.state.duetime,
+      dueInterval: this.state.interval,
+      category: this.state.category,
+      media: this.state.media
+    }
+    axios.post("/createchallenge", challengeinput)
+    .then(function(result) {
+        result.data.success ? that.props.nextPage('clist') : that.setState({ error: result.error })
+      })
   }
 
   render() {
     return (
-    <div className="App col-md-4 col-md-offset-4">
+    <div className="App">
       <div className="Page">
         <div className="Section">
-          <h3> Post New Challenge </h3>
+          <h3> New Challenge </h3>
 
             <form className="form">
               <div className="form-group">
                   <input type="text" className="form-control" name="title" placeholder="Challenge title.." onChange={this.onInputChange} value={this.state.title} />
-                  <div className="subtext">Deadline for posting a video </div>
               </div>
               <div className="form-group">
                 <input type="file" name="pic" accept="image/*" className="form-control" />
@@ -74,7 +86,7 @@ class Cnew extends Component {
                     </select>
                   </div>
             </div>
-              <button onClick={this.signUp} className="btn btn-default">Challenge Accepted!</button>
+              <button onClick={this.createChallenge} className="btn btn-default">Challenge Accepted!</button>
           </form>
             </div>
         </div>
