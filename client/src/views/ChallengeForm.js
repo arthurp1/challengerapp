@@ -7,7 +7,7 @@ import axios from 'axios'
 class Cnew extends Component {
   constructor(props) {
     super(props)
-    this.state = { title: '', password: '', date: '', focused: ''}
+    this.state = { title: '', password: '', date: '', focused: '', minbet: '$1', minbackers:'10'}
     this.createChallenge = this.createChallenge.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
   }
@@ -43,7 +43,6 @@ class Cnew extends Component {
     <div className="App">
       <div className="Page">
         <div className="Section">
-          <h3> New Challenge </h3>
             <form className="form">
 
               <div className="input-field">
@@ -57,19 +56,19 @@ class Cnew extends Component {
                 <input type="file" name="media" accept="image/*" className="form-control" value={this.state.media} onChange={this.onInputChange} />
               </div>
 
-
               <div className="input-field">
                 <div className="input-label">Deadline</div>
-              <div className="deadline">
+              <div className="split-input">
                 <input className="duedate half-page" name="duedate" type="date" value={this.state.duedate} onChange={this.onInputChange} />
                 <input className="duetime" name="duetime" type="time" value={this.state.duetime} onChange={this.onInputChange} />
               </div>
             </div>
-
+            <div className="advanced-hide">
             <div className="input-field">
               <div className="input-label">Minimum Backers</div>
-            <div className="minstake">
-              <input name="minstake" type="text" value={this.state.minstake} onChange={this.onInputChange} />
+            <div className="minstake split-input">
+              <input className="half-page" name="minstake" placeholder="5" type="text" value={this.state.minbackers} onChange={this.onInputChange} /><span>backers</span>
+              <input className="half-page" name="minstake" placeholder="$1" type="text" value={this.state.minbet} onChange={this.onInputChange} /> <span>each</span>
             </div>
           </div>
 
@@ -77,10 +76,16 @@ class Cnew extends Component {
             Tags
             <div className="input-label"></div>
           <div className="tags">
+
             <input name="tags" type="text" value={this.state.tags} onChange={this.onInputChange} />
           </div>
         </div>
-              <button onClick={this.createChallenge} className="btn btn-default">Challenge Accepted!</button>
+        </div>
+
+
+
+
+              <button onClick={this.createChallenge} className="btn btn-default">Create Challenge</button>
           </form>
             </div>
         </div>

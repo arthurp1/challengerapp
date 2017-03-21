@@ -7,7 +7,7 @@ class Navbar extends Component {
         <nav className="nav-header">
         <div className="nav-wrapper">
           <ul className="nav-mobile ul-flex title-center">
-            <a className="logo" onClick={ () => this.props.onNavigate('signup')}> BE₸₸ER</a>
+            <a className="logo" onClick={ () => this.props.onNavigate('signup')}> BE₸₸R</a>
           </ul>
         </div>
     </nav>
