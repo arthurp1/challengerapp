@@ -1,0 +1,58 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'install', 'package.json' ]
+2 info using npm@3.10.10
+3 info using node@v6.9.4
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData package.json
+8 silly fetchOtherPackageData package.json
+9 silly cache add args [ 'package.json', null ]
+10 verbose cache add spec package.json
+11 silly cache add parsed spec Result {
+11 silly cache add   raw: 'package.json',
+11 silly cache add   scope: null,
+11 silly cache add   escapedName: 'package.json',
+11 silly cache add   name: null,
+11 silly cache add   rawSpec: 'package.json',
+11 silly cache add   spec: '/home/piepongwong/Documents/NYCDA/challengerapp/package.json',
+11 silly cache add   type: 'local' }
+12 silly addLocalTarball shasum (computed) 172bdbbaa87b7e2884b3999466afb3a49465b4d2
+13 verbose addTmpTarball /home/piepongwong/Documents/NYCDA/challengerapp/package.json not in flight; adding
+14 verbose correctMkdir /home/piepongwong/.npm correctMkdir not in flight; initializing
+15 verbose addTmpTarball validating metadata from /home/piepongwong/Documents/NYCDA/challengerapp/package.json
+16 verbose tar unpack /home/piepongwong/Documents/NYCDA/challengerapp/package.json
+17 verbose tar unpacking to /tmp/npm-30284-3d565326/unpack-8475b21e
+18 silly gentlyRm /tmp/npm-30284-3d565326/unpack-8475b21e is being purged
+19 verbose gentlyRm don't care about contents; nuking /tmp/npm-30284-3d565326/unpack-8475b21e
+20 silly gunzTarPerm modes [ '755', '644' ]
+21 error not a package /home/piepongwong/Documents/NYCDA/challengerapp/package.json
+22 error addLocal Could not install /home/piepongwong/Documents/NYCDA/challengerapp/package.json
+23 silly fetchPackageMetaData Error: ENOENT: no such file or directory, open '/tmp/npm-30284-3d565326/unpack-8475b21e/package.json'
+23 silly fetchPackageMetaData     at Error (native)
+23 silly fetchPackageMetaData  error for package.json { Error: ENOENT: no such file or directory, open '/tmp/npm-30284-3d565326/unpack-8475b21e/package.json'
+23 silly fetchPackageMetaData     at Error (native)
+23 silly fetchPackageMetaData   errno: -2,
+23 silly fetchPackageMetaData   code: 'ENOENT',
+23 silly fetchPackageMetaData   syscall: 'open',
+23 silly fetchPackageMetaData   path: '/tmp/npm-30284-3d565326/unpack-8475b21e/package.json' }
+24 silly rollbackFailedOptional Starting
+25 silly rollbackFailedOptional Finishing
+26 silly runTopLevelLifecycles Finishing
+27 silly install printInstalled
+28 verbose stack Error: ENOENT: no such file or directory, open '/tmp/npm-30284-3d565326/unpack-8475b21e/package.json'
+28 verbose stack     at Error (native)
+29 verbose cwd /home/piepongwong/Documents/NYCDA/challengerapp
+30 error Linux 4.4.0-66-generic
+31 error argv "/usr/bin/nodejs" "/usr/bin/npm" "install" "package.json"
+32 error node v6.9.4
+33 error npm  v3.10.10
+34 error path /tmp/npm-30284-3d565326/unpack-8475b21e/package.json
+35 error code ENOENT
+36 error errno -2
+37 error syscall open
+38 error enoent ENOENT: no such file or directory, open '/tmp/npm-30284-3d565326/unpack-8475b21e/package.json'
+39 error enoent ENOENT: no such file or directory, open '/tmp/npm-30284-3d565326/unpack-8475b21e/package.json'
+39 error enoent This is most likely not a problem with npm itself
+39 error enoent and is related to npm not being able to find a file.
+40 verbose exit [ -2, true ]

@@ -22,10 +22,10 @@ class Cnew extends Component {
     let challengeinput = {
       userId: this.state.userid,
       dueDate: this.state.duedate,
-      dueTime: this.state.duetime,
-      dueInterval: this.state.interval,
-      category: this.state.category,
+      category: this.state.category, //*dit moet een array zijn
       media: this.state.media
+      body: this.state.body //*Jurgen
+      title: this.state.title //*Jurgen
     }
     axios.post("/createchallenge", challengeinput)
     .then(function(result) {
