@@ -25,12 +25,16 @@ class Cnew extends Component {
       title: this.state.title,
       media: this.state.media,
       dueDate: this.state.duedate,
-      category: this.state.category, //*dit moet een array zijn
+<<<<<<< HEAD
+      dueTime: this.state.duetime,
       minStake: this.state.minstake,
       tags: this.state.tags
+=======
+      category: this.state.category, //*dit moet een array zijn
       media: this.state.media
       body: this.state.body //*Jurgen
       title: this.state.title //*Jurgen
+>>>>>>> 8e28b13d682d9d9853624da1a81dd00414746a3d
     }
 
     console.log('challengeinput')

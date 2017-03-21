@@ -16,11 +16,10 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 let User = db.User
 let Post = db.Post
 let Comment = db.Comment
+let Contribution = db.Contribution
 let sequelize = db.sequelize
-
 //necessary?
 app.use(bodyParser.urlencoded({ extended: true }));
-
 
 app.set('view engine', 'pug');
 app.set('views','./views');
@@ -70,26 +69,32 @@ app.get("/postmessage", function(req, res) {
 	res.render('postmessage', {userId})
 })
 
-app.get("/login", function(req, res) {
-	res.render('login')
-})
-
 app.get("/profile", function(req, res) {
 	res.render("profile")
 })
 
-app.post('/uploadhandler', upload.single("profilepic"), function (req,res) {
+app.post('/uploadhandler', upload.single("file1"), function (req,res) {
 
   /** When using the "single"
       data come in "req.file" regardless of the attribute "name". **/
   var tmp_path = req.file.path;
+  tmp_path = "hallo"
 
   /** The original name of the uploaded file
       stored in the variable "originalname". **/
   var target_path = 'uploads/' + req.file.originalname;
 
-  console.log(tmp_path)
+  	console.log(target_path)
+  	console.log(tmp_path)
+
+
+	res.end()
 })
+
+app.get("/upload", (req, res) => {
+	res.render("upload")
+})
+
 app.get('/test', function (req, res) {
 	console.log(req)
 	res.send('hoi')
@@ -97,7 +102,6 @@ app.get('/test', function (req, res) {
 //Signup Handler
 app.post('/signuphandler', function(req, res){
 	console.log('request received')
-	console.log(req.body)
 	let firstName = req.body.firstName
 	let lastName = req.body.lastName
 	let email = req.body.email
@@ -124,7 +128,7 @@ app.post('/signuphandler', function(req, res){
 					plain: true
 				})
 			)
-			let transporter = nodemailer.createTransport({
+			/*let transporter = nodemailer.createTransport({
 			    service: 'gmail',
 			    auth: {
 			        user: process.env.GMAIL_USERNAME,
@@ -151,7 +155,7 @@ app.post('/signuphandler', function(req, res){
 			        return console.log(error);
 			    }
 			    console.log('Message %s sent: %s', info.messageId, info.response);
-			});
+			});*/
 		})
 		.then( function(){
 			res.send({ success: true })
@@ -213,40 +217,104 @@ app.post('/loginhandler', function(req, res){
 			req.session.userId = userRow.id
 			req.session.loggedIn = true
 			req.session.firstName = userRow.firstName
+			console.log("User Logged In. SessionUserId: " + req.session.userId )
 			res.send({ success: true })
 		})
 		.catch(function(e){
 			console.log(e)
-			res.send( { error: 'Username or password is incorrect'} )
+			res.end( { succes: false, error: 'Username or password is incorrect'} )
 		})
 	})
 	.catch(function(e) {
 		console.log(e)
-		res.send( { error: 'Username or password is incorrect' })
+		res.send( { succes: false, error: 'Username or password is incorrect' })
 	})
 })
 
 //Post Message Handler
 app.post('/postmessagehandler', function(req, res) {
-	if(req.session.loggedIn === undefined){
-		res.redirect("login")
-	}
-
 	let userId = req.session.userId //session
-	let title = req.body.title
+/*	if(req.session.loggedIn === undefined){
+		res.redirect("login")
+	}*/
+	userId =  req.body.userId
+	let dueDate =  req.body.dueDate //Datime, format: 'YYYY-MM-DD HH:MM:SS'
+	let media =  req.body.media
 	let body = req.body.body
+	let title = req.body.title
+	let minStake = req.body.minStake
 
 	User.findById(userId)
-	.then(user => {
+	.then( user => {
 		return user.createPost({
+			userId: userId,
+			dueDate: dueDate,
+			media: media,
+			body: body,
 			title: title,
-			body: body
+			minStake: minStake
 		})
 	})
 	.then(createdPost => {
-		res.redirect("/viewmessages")
+		res.send({success: true})
 	})
-	.catch( e => console.log('An error has occured.' + e))
+	.catch( e => {
+		console.log('An error has occured.' + e)
+		res.send({ success: false, error: e })
+	})
+})
+
+
+app.get("/setcontribution", function(req, res) {
+	let amount = req.query.amount
+	let challengeId = req.query.challengeId
+	let userId = req.query.userId
+
+	console.log("Amount: " + amount + "Userid: " + userId +"params: " + req.params)
+	console.log("Query: " + req.query.amount)
+
+	User.findById(userId)
+	.then(user => {
+		user.createContribution( {
+			stake: amount
+		})
+		.then( contribution => {
+			Post.findById(challengeId)
+			.then(challenge => {
+				challenge.setContributions([contribution])
+			})
+			.then( () => {
+				res.send({success: true})
+			})
+			.catch( e => {
+				console.log(e)
+				res.end({success: false, error: e})
+			})
+		})
+		.catch( e => {
+			console.log(e)
+			res.end({success: false, error: e})
+		})
+	})
+	.catch( e => {
+		console.log(e)
+		res.send({success: false, error: e})
+	})
+})
+
+//View all messages
+app.get('/loadposts', function(req, res) {
+	Post.findAll({include: [ 
+		{model: User, attributes: ["id", "firstName", "lastName"] },
+		{model: Contribution,
+			include: [{model: User, 
+			attributes: ["id", "firstName", "lastName"]
+		}],
+		}				
+	]})
+	.then(function(posts){
+		res.send({success: true, challenges: posts})
+	})
 })
 
 //Post Comment Handler
@@ -276,24 +344,6 @@ app.post('/postcommenthandler', function(req, res) {
 	})
 	.catch(function(e) {
 		console.log(e)
-	})
-})
-
-//View all messages
-app.get('/viewmessages', function(req, res) {
-	let allPosts;
-	let userId = req.session.userId
-
-	Post.findAll({include: [User,
-		{
-			model: Comment,
-			include: [
-				User
-			]
-		}
-	]})
-	.then(function(posts){
-		res.render("showallmessages2", {posts, userId})
 	})
 })
 
