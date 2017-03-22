@@ -1,4 +1,5 @@
 import { REQUEST_USER, RECEIVE_USER } from '../actions/index'
+import { fakeuser } from './fakedata'
 
 const initialState = {
    fetching: false,
@@ -20,7 +21,8 @@ export default function(state = initialState, action) {
       console.log('RECEIVE_USER called')
       return Object.assign({}, state, {
         fetching: false,
-        payload: action.payload.data
+        // payload: action.payload.data
+        payload: fakeuser
       })
   }
   return state;

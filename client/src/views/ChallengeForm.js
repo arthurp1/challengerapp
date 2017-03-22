@@ -27,9 +27,9 @@ class Cnew extends Component {
       dueDate: this.state.duedate,
       category: this.state.category, //*dit moet een array zijn
       minStake: this.state.minstake,
-      tags: this.state.tags
-      media: this.state.media
-      body: this.state.body //*Jurgen
+      tags: this.state.tags,
+      media: this.state.media,
+      body: this.state.body, //*Jurgen
       title: this.state.title //*Jurgen
     }
 
@@ -84,10 +84,6 @@ class Cnew extends Component {
           </div>
         </div>
         </div>
-
-
-
-
               <button onClick={this.createChallenge} className="btn btn-default">Create Challenge</button>
           </form>
             </div>

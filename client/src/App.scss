@@ -18,8 +18,41 @@ $primary-text-color:   #212121;
 $secondary-text-color: #757575;
 $divider-color:        #BDBDBD;
 
+.card-footer {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+
+}
+.card-firstline {
+  display: flex;
+  .card-autor {
+  justify-content: flex-start;
+  }
+  .duetime {
+    justify-content: flex-end;
+  }
+}
+.card-title {
+  font-size: 1.2rem !important;
+}
+
+.totalContributors, .minContributions {
+  font-size: 1.1rem;
+  border-left: grey 1px;
+}
+
+.duetime {
+  justify-content: flex-end;
+}
+
+
 .collection-item {
  text-align: left;
+}
+
+.nofocus {
+  display: none;
 }
 
 body {
