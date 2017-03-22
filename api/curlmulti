@@ -1,0 +1,6 @@
+#!/bin/bash
+curl \
+ 	-F "userId=2" \
+ 	-F "photos=@/home/piepongwong/Pictures/andere_voorzijde.jpg" \
+ 	-F "photos=@/home/piepongwong/Pictures/damvoorzijde.jpg" \
+ 	localhost:3001/postmessagehandler
