@@ -6,6 +6,7 @@ import Signup from './views/Signup'
 import ChallengeList from './views/ChallengeList'
 import ChallengeForm from './views/ChallengeForm'
 import Profile from './views/Profile'
+import Updates from './views/Updates'
 
 
 class Router extends Component {
@@ -23,6 +24,8 @@ class Router extends Component {
         return <ChallengeForm nextPage={this.props.onNavigate} />
       case 'profile':
         return <Profile nextPage={this.props.onNavigate} />
+      case 'updates':
+        return <Updates nextPage={this.props.onNavigate} />
       }
   }
 }

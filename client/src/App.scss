@@ -7,6 +7,54 @@ $purple1: #A554C0;
 $text1: #FFFFFF;
 $primary: #00838f;
 
+$teal:   #00796B;
+
+$primary-color-dark:   #E64A19;
+$primary-color:        #FF5722;
+$primary-color-light:  #FFCCBC;
+$primary-color-text:   #FFFFFF;
+$accent-color:         #607D8B;
+$primary-text-color:   #212121;
+$secondary-text-color: #757575;
+$divider-color:        #BDBDBD;
+
+.card-footer {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+
+}
+.card-firstline {
+  display: flex;
+  .card-autor {
+  justify-content: flex-start;
+  }
+  .duetime {
+    justify-content: flex-end;
+  }
+}
+.card-title {
+  font-size: 1.2rem !important;
+}
+
+.totalContributors, .minContributions {
+  font-size: 1.1rem;
+  border-left: grey 1px;
+}
+
+.duetime {
+  justify-content: flex-end;
+}
+
+
+.collection-item {
+ text-align: left;
+}
+
+.nofocus {
+  display: none;
+}
+
 body {
   font-size: 0.9rem;
   font-family: $font-stack;
@@ -16,7 +64,7 @@ h1,h2,h3 {
   font-size: 2rem;
 }
 .nav-header {
-  background-color: $darkblue !important;
+  background-color: $teal !important;
   color: white !important;
 }
 
@@ -29,6 +77,25 @@ small {
   color: $mainblue;
   font-size: 0.9rem;
 }
+
+.split-input {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+
+.advanced-hide {
+
+}
+
+.currencyinput {
+    border: 1px inset #ccc;
+}
+.currencyinput input {
+    border: 0;
+}
+
 
 .logo{
   font-weight: bold;
@@ -80,7 +147,7 @@ small {
   margin: 0 5%;
 }
 .ul-flex li {
-  margin: 0 10px;
+  margin: 0px;
 }
 
 .ul-flex li:hover {
@@ -125,4 +192,12 @@ small {
     .Page {
       margin: 0 30%;
     }
+}
+
+.btn-floating i{
+  // font-family: $font-stack;
+  // font-size: 1.2rem !important;
+  min-width: 56px !important;
+  color: #fff !important;
+  // background-color: $teal !important;
 }
