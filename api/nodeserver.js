@@ -243,7 +243,7 @@ app.post('/loginhandler', function(req, res){
 })
 
 //Post Message Handler
-app.post('/postmessagehandler', upload.array('photos', 2), function(req, res) {
+app.post('/createchallengehandler', upload.array('photos', 2), function(req, res) {
 	//let userId = req.session.userId //session
 	console.log(req.files)
 
@@ -251,10 +251,13 @@ app.post('/postmessagehandler', upload.array('photos', 2), function(req, res) {
 /*	if(req.session.loggedIn === undefined){
 		res.redirect("login")
 	}*/
-	let userId =  req.body.userId
 
-	let dueDate =  req.body.dueDate //Datime, format: 'YYYY-MM-DD HH:MM:SS'
+	//let charityId = req.body.charityId // niet mvp 2017-04-04 13:23:44
+	//let tags = req.body.tags //is an array
 	let mediaAr =  req.files
+
+	let userId =  req.body.userId
+	let dueDate =  req.body.dueDate //Datime, format: 'YYYY-MM-DD HH:MM:SS'
 	let body = req.body.body
 	let title = req.body.title
 	let minStake = req.body.minStake

@@ -24,7 +24,7 @@ curl \
  	-F "minStake=40" \
  	-F "dueDate=2019-03-31 12:24:23" \
  	-F "title=This is it!" \
- 	-F "photos=@/home/piepongwong/Pictures/andere_voorzijde.jpg" \
+ 	-F "photos=@http://i44.tinypic.com/s4t1zl.jpg" \
  	-F "photos=@/home/piepongwong/Pictures/damvoorzijde.jpg" \
  	localhost:3001/postmessagehandler
 
