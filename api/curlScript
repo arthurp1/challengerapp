@@ -4,23 +4,30 @@ curl --data "firstName=Jurgen&lastName=Tonneyck&email=j.tonneyck@gmail.com&passw
 curl --data "firstName=Wong&lastName=Pong&email=wongpong@gmail.com&password=12345&passwordCheck=12345" localhost:3001/signuphandler
 
 #making some mock data for first user
-curl --data "email=j.tonneyck@gmail.com&password=12345" localhost:3001/loginhandler
+#curl --data "email=j.tonneyck@gmail.com&password=12345" localhost:3001/loginhandler
 
-curl --data "userId=1&dueDate=2019-03-31%2012:24:23&body=Super&20awesome%20challenge1&title=1Just&20do%20it!&minStake=20" localhost:3001/postmessagehandler
-curl --data "userId=1&dueDate=2019-03-31%2012:24:23&body=Super&20awesome%20challenge2&title=2Just&20do%20it!&minStake=30" localhost:3001/postmessagehandler
+#curl --data "userId=1&dueDate=2019-03-31%2012:24:23&body=Super&20awesome%20challenge1&title=1Just&20do%20it!&minStake=20" localhost:3001/postmessagehandler
+#curl --data "userId=1&dueDate=2019-03-31%2012:24:23&body=Super&20awesome%20challenge2&title=2Just&20do%20it!&minStake=30" localhost:3001/postmessagehandler
 
 #making some mock data for second user
-curl --data "email=wongpong@gmail.com&password=12345" localhost:3001/loginhandler
+#curl --data "email=wongpong@gmail.com&password=12345" localhost:3001/loginhandler
 
-curl --data "userId=1&dueDate=2019-03-31%2012:24:23&body=Super&20awesome%20challenge3&title=3Just&20do%20it!&minStake=40" localhost:3001/postmessagehandler
-curl --data "userId=2&dueDate=2019-03-31%2012:24:23&body=Super&20awesome%20challenge4&title=4Just&20do%20it!&minStake=50" localhost:3001/postmessagehandler
+#curl --data "userId=2&dueDate=2019-03-31%2012:24:23&body=Super&20awesome%20challenge4&title=4Just&20do%20it!&minStake=50" localhost:3001/postmessagehandler
 
 #setting some contributions
-curl -G "localhost:3001/setcontribution?userId=1&challengeId=3&amount=40"
-curl -G "localhost:3001/setcontribution?userId=2&challengeId=1&amount=45"
+#curl -G "localhost:3001/setcontribution?userId=1&challengeId=3&amount=40"
+#curl -G "localhost:3001/setcontribution?userId=2&challengeId=1&amount=45"
+
+curl \
+ 	-F "userId=2" \
+ 	-F "body=Super awesome challenge" \
+ 	-F "minStake=40" \
+ 	-F "dueDate=2019-03-31 12:24:23" \
+ 	-F "title=This is it!" \
+ 	-F "photos=@/home/piepongwong/Pictures/andere_voorzijde.jpg" \
+ 	-F "photos=@/home/piepongwong/Pictures/damvoorzijde.jpg" \
+ 	localhost:3001/postmessagehandler
 
 #fetching all challenges with backers and contributions
 curl -G "localhost:3001/loadposts" | jq 
 
-#uploadding pictures
-curl -v -F "file1=1" -F "file1=@/home/piepongwong/Pictures/andere_voorzijde.jpg" localhost:3001/uploadhandler

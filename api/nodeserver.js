@@ -4,10 +4,17 @@ let session = require('express-session');
 let db = require('./initModule.js')
 let app = express()
 let bcrypt = require('bcrypt-as-promised')
-const nodemailer = require('nodemailer'); //sandgrid?
-
+let nodemailer = require('nodemailer'); //sandgrid?
 let multer  = require('multer');
-let upload = multer({ dest: 'upload/'});
+let storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'upload')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now())
+  }
+})
+let upload = multer({ storage: storage })
 let fs = require('fs');
 
 app.use(bodyParser.json()); // for parsing application/json
@@ -17,14 +24,15 @@ let User = db.User
 let Post = db.Post
 let Comment = db.Comment
 let Contribution = db.Contribution
+let Media = db.Media
+let Picture = db.Picture
+let Video = db.Video
 let sequelize = db.sequelize
 //necessary?
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.set('view engine', 'pug');
 app.set('views','./views');
 app.use(express.static('public'))
-
 app.use(session({
 	secret: "wow much secret very security",
     resave: true,
@@ -73,21 +81,25 @@ app.get("/profile", function(req, res) {
 	res.render("profile")
 })
 
+//for testing multiformhandling
 app.post('/uploadhandler', upload.single("file1"), function (req,res) {
+	let target_path = 'uploads/' + req.file.originalname;
+	let message = req.body.message
+	console.log("test: " + message)
 
+	Post.findById(1)
+	.then( post => {
+		console.log("This is the media target path!!:" + target_path)
+		console.log("This is the pooooooooost!!: " + post)
+		post.update( {
+			media: target_path
+		}) 
+	})
   /** When using the "single"
       data come in "req.file" regardless of the attribute "name". **/
   var tmp_path = req.file.path;
-  tmp_path = "hallo"
-
   /** The original name of the uploaded file
       stored in the variable "originalname". **/
-  var target_path = 'uploads/' + req.file.originalname;
-
-  	console.log(target_path)
-  	console.log(tmp_path)
-
-
 	res.end()
 })
 
@@ -166,7 +178,6 @@ app.post('/signuphandler', function(req, res){
 	})
 })
 //test
-
 app.get("/validationhandler", function(req, res) {
 	let validationhash = req.params.val
 	let userId = req.params.userId
@@ -232,30 +243,47 @@ app.post('/loginhandler', function(req, res){
 })
 
 //Post Message Handler
-app.post('/postmessagehandler', function(req, res) {
-	let userId = req.session.userId //session
+app.post('/postmessagehandler', upload.array('photos', 2), function(req, res) {
+	//let userId = req.session.userId //session
+	console.log(req.files)
+
+	console.log("Reached post handler")
 /*	if(req.session.loggedIn === undefined){
 		res.redirect("login")
 	}*/
-	userId =  req.body.userId
+	let userId =  req.body.userId
+
 	let dueDate =  req.body.dueDate //Datime, format: 'YYYY-MM-DD HH:MM:SS'
-	let media =  req.body.media
+	let mediaAr =  req.files
 	let body = req.body.body
 	let title = req.body.title
 	let minStake = req.body.minStake
 
+	console.log("Body:" + body)
+	console.log(minStake)
+
 	User.findById(userId)
 	.then( user => {
 		return user.createPost({
-			userId: userId,
 			dueDate: dueDate,
-			media: media,
 			body: body,
 			title: title,
 			minStake: minStake
 		})
 	})
-	.then(createdPost => {
+	.then( post => {
+		for(let i = 0; i < mediaAr.length; i++) {
+			Media.create({
+				postId: post.id,
+				pictureUrl: mediaAr[i].path,
+				mimetype: mediaAr[i].mimetype
+			})
+			.then( media => {
+				post.mediaId = Media.id
+			})
+		}
+	})
+	.then(() => {
 		res.send({success: true})
 	})
 	.catch( e => {
@@ -263,7 +291,6 @@ app.post('/postmessagehandler', function(req, res) {
 		res.send({ success: false, error: e })
 	})
 })
-
 
 app.get("/setcontribution", function(req, res) {
 	let amount = req.query.amount
@@ -286,14 +313,6 @@ app.get("/setcontribution", function(req, res) {
 			.then( () => {
 				res.send({success: true})
 			})
-			.catch( e => {
-				console.log(e)
-				res.end({success: false, error: e})
-			})
-		})
-		.catch( e => {
-			console.log(e)
-			res.end({success: false, error: e})
 		})
 	})
 	.catch( e => {
@@ -306,10 +325,12 @@ app.get("/setcontribution", function(req, res) {
 app.get('/loadposts', function(req, res) {
 	Post.findAll({include: [ 
 		{model: User, attributes: ["id", "firstName", "lastName"] },
+		{model: Comment},
+		{model: Media},
 		{model: Contribution,
 			include: [{model: User, 
 			attributes: ["id", "firstName", "lastName"]
-		}],
+		}]
 		}				
 	]})
 	.then(function(posts){
@@ -492,8 +513,6 @@ app.post("/searchuserhandler", function(req, res) {
 		})
 	}
 })
-
-
 
 let server = app.listen(3001, function () {
 	console.log('Server running on port: ' + server.address().port)

@@ -40,13 +40,30 @@ const Post = sequelize.define('post', {
     dueDate: {
       type: Sequelize.DATE
     },
-    media: {
-      type: Sequelize.STRING
-    },
     minStake: {
       type: Sequelize.INTEGER
+    },
+    title: {
+      type: Sequelize.STRING
+    },
+    body: {
+      type: Sequelize.STRING
     }
 })
+
+//define media
+const Media = sequelize.define('media', {
+  videoUrl: {
+    type: Sequelize.STRING
+  },
+  pictureUrl: {
+    type: Sequelize.STRING
+  },
+  mimetype: {
+    type: Sequelize.STRING
+  }
+})
+
 
 const Contribution = sequelize.define("contribution", {
   stake: {
@@ -61,7 +78,9 @@ const Comment = sequelize.define('comment', {
     }
 })
 
-//hier was je gebleven! 
+Post.hasMany(Media)
+Media.belongsTo(Post)
+
 Contribution.belongsTo(User)
 User.hasMany(Contribution)
 
@@ -80,10 +99,6 @@ Comment.belongsTo(Post)
 User.belongsToMany(User, {as: {singular: "Follower", plural: "Followers"}, foreignKey: "FollowedId", through: "Followers_Followeds"})
 User.belongsToMany(User, {as: {singular: "Followed", plural: "Followeds"}, foreignKey: "FollowerId", through: "Followers_Followeds"})
 
-/*Post.belongsToMany(User, {as: "Backer", through: "Posts_Backers"}) //  */
-
-
-
 module.exports = {
   //Define Users
   User: User,
@@ -93,12 +108,9 @@ module.exports = {
   Comment: Comment,
   //define Contribution
   Contribution: Contribution,
+  //define media
+  Media: Media,
   //for sync operations
   sequelize: sequelize
 }
 
-/*Optional Define Tags
-
-Optional Define Categories
-*/
-  //signup page
