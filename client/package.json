@@ -8,6 +8,7 @@
     "react-scripts": "0.9.5"
   },
   "dependencies": {
+    "auth0-lock": "^10.13.0",
     "axios": "^0.15.3",
     "materialize": "^1.0.0",
     "moment": "^2.18.1",
@@ -18,6 +19,7 @@
     "react-dates": "^8.2.0",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
+    "react-router": "^4.0.0",
     "redux": "^3.6.0",
     "redux-promise": "^0.5.3"
   },

@@ -46,15 +46,17 @@ class Cnew extends Component {
             <form className="form" encType="multipart/form-data">
 
               <div className="input-field">
-                <input type="text" className="form-control" name="title" placeholder="Challenge title.." onChange={this.onInputChange} value={this.state.title} />
-              </div>
-
-              <div className="input-field">
                 <div className="input-label">
                   <div className="large-label">Upload</div>
                 </div>
-                <input type="file" name="media" accept="image/*" className="form-control" value={this.state.media} onChange={this.onInputChange} />
+                <input type="file" capture="camera" name="media" accept="image/*" className="form-control" value={this.state.media} onChange={this.onInputChange} />
               </div>
+
+              <div className="input-field">
+                <input type="text" className="form-control" name="title" placeholder="Challenge title.." onChange={this.onInputChange} value={this.state.title} />
+              </div>
+
+
 
               <div className="input-field">
                 <div className="input-label">Deadline</div>

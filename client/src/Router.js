@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
-
 import Login from './views/Login'
 import Signup from './views/Signup'
 import ChallengeList from './views/ChallengeList'
 import ChallengeForm from './views/ChallengeForm'
 import Profile from './views/Profile'
 import Updates from './views/Updates'
+import './App.css';
 
 
 class Router extends Component {

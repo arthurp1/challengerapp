@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchUser } from './../actions/index'
+import { calcLvl } from './../utils/calc'
 
 class Profile extends Component {
   constructor(props) {
@@ -23,15 +24,15 @@ class Profile extends Component {
       console.log('this data came back:')
       console.log(user)
       let karmaexp = 2400
-      let karmalvl = 2
-      return (
-        <div className="user-profile Page">
+      let karma = calcLvl(karmaexp)
+      console.log(karma)
+      ( <div className="user-profile Page">
           <img className="img-circle" src={user.picture.large} alt={user.name.first} />
           <div className="user-name"><h3>{user.login.username}</h3> </div>
           <div className="panel panel-default">
             <div className="panel-body">
-              <div className="karma-lvl">{karmalvl}</div>
-              <div className="karma-xp">{karmaexp}</div>
+              <div className="karma-lvl">{karma.lvl}</div>
+              <div className="karma-xp">{karma.tolvl} / {karma.thislvl}</div>
               <div className="panel-body"></div>
             </div>
           </div>
