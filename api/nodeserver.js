@@ -93,7 +93,7 @@ app.post('/uploadhandler', upload.single("file1"), function (req,res) {
 		console.log("This is the pooooooooost!!: " + post)
 		post.update( {
 			media: target_path
-		}) 
+		})
 	})
   /** When using the "single"
       data come in "req.file" regardless of the attribute "name". **/
@@ -326,15 +326,15 @@ app.get("/setcontribution", function(req, res) {
 
 //View all messages
 app.get('/loadposts', function(req, res) {
-	Post.findAll({include: [ 
+	Post.findAll({include: [
 		{model: User, attributes: ["id", "firstName", "lastName"] },
 		{model: Comment},
 		{model: Media},
 		{model: Contribution,
-			include: [{model: User, 
+			include: [{model: User,
 			attributes: ["id", "firstName", "lastName"]
 		}]
-		}				
+		}
 	]})
 	.then(function(posts){
 		res.send({success: true, challenges: posts})

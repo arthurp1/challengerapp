@@ -21,32 +21,29 @@ class Cnew extends Component {
     const that = this
 
     let challengeinput = {
-      userId: this.state.userid,
+      userId: 1,
       title: this.state.title,
-      media: this.state.media,
-      dueDate: this.state.duedate,
-      category: this.state.category, //*dit moet een array zijn
+      photos: this.state.media,
+      dueDate: '2017-04-04 12:23:00',
       minStake: this.state.minstake,
       tags: this.state.tags,
-      media: this.state.media,
-      body: this.state.body, //*Jurgen
-      title: this.state.title //*Jurgen
+      body: 'hoi'
     }
 
     console.log('challengeinput')
     console.log(challengeinput)
-    axios.post("/createchallenge", challengeinput)
+    axios.post("/createchallengehandler", challengeinput)
     .then(function(result) {
-        result.data.success ? that.props.nextPage('clist') : that.setState({ error: result.error })
+        console.log(result)
+        result.data.success ? console.log(result) : that.setState({ error: result.error })
       })
   }
-
   render() {
     return (
     <div className="App">
       <div className="Page">
         <div className="Section">
-            <form className="form">
+            <form className="form" encType="multipart/form-data">
 
               <div className="input-field">
                 <input type="text" className="form-control" name="title" placeholder="Challenge title.." onChange={this.onInputChange} value={this.state.title} />
@@ -70,8 +67,8 @@ class Cnew extends Component {
             <div className="input-field">
               <div className="input-label">Minimum Backers</div>
             <div className="minstake split-input">
-              <input className="half-page" name="minstake" placeholder="5" type="text" value={this.state.minbackers} onChange={this.onInputChange} /><span>backers</span>
-              <input className="half-page" name="minstake" placeholder="$1" type="text" value={this.state.minbet} onChange={this.onInputChange} /> <span>each</span>
+              <input className="half-page" name="minstake" placeholder="5" type="text"  onChange={this.onInputChange} /><span>backers</span>
+              <input className="half-page" name="minstake" placeholder="$1" type="text" onChange={this.onInputChange} /> <span>each</span>
             </div>
           </div>
 

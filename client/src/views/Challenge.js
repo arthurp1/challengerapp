@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import update from 'react-addons-update';
+var moment = require('moment');
+moment().format();
 
 // load challenges
 
@@ -27,30 +29,32 @@ class Challenge extends Component {
     let min_cont = 200
     let challengePercent = ( (curr_cont / min_cont) * 100 ) + '%'
     let challenge = this.props
-    console.log(challenge)
+    let dueDate = "2017-03-23 23:30"
+    function calcTime(duedate) { return moment(duedate,"YYYY-MM-DD HH:mm").endOf('hour').fromNow() }
     return <div key={challenge.id} className="card">
               <div className="card-image">
+                <div className="card-reveal">Overlap of image</div>
                 <img src={ 'https://placeimg.com/400/225/people/' + challenge.id } alt={challenge.title} />
-                <div className="nofocus"></div>
               </div>
-                <div className="card-content">
-                  <div className="card-firstline">
-                    <div className="card-author"> {challenge.username}</div>
-                    <div className="duetime">Wednesday 3pm</div>
-                  </div>
-                    <div className="card-title">{challenge.title}</div>
-                      <div className="card-footer">
-                        <button className="btn btn-default" onClick={() => challenge.contribute(23, challenge.id, 1)}>Back $1</button>
-                        <div className="totalContributors">{challengePercent}<span className="subtext"> backed</span></div>
-                        <div className="minContributions">${curr_cont}<span className="subtext"> collected</span></div>
-                      </div>
+              <div className="card-content">
+                <div className="card-header">
+                  <div className="card-author"> {challenge.username}</div>
+                  <div className="duetime">{calcTime(dueDate)}</div>
                 </div>
-                <div className="progress">
-                  <div className="determinate" style={{ width: challengePercent}}></div>
+                <div className="card-title">{challenge.title}</div>
+                <div className="card-footer">
+                  <button className="btn btn-default" onClick={() => challenge.contribute(23, challenge.id, 1)}>Back $1</button>
+                  <div className="totalContributors">{challengePercent}<span className="subtext"> backed</span></div>
+                  <div className="minContributions">${curr_cont}<span className="subtext"> collected</span></div>
                 </div>
+              </div>
+              <div className="progress">
+                <div className="determinate" style={{ width: challengePercent}}></div>
+              </div>
           </div>
   }
 }
+
 //
 // function mapDispatchToProps(dispatch) {
 //   return bindActionCreators({ setContribution }, dispatch);

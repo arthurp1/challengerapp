@@ -10,20 +10,29 @@ export const contribution = {
 
 export const fakechallenge = [ {
   challengeid: 1,
-  userid: 23,
-  username: 'marcel20',
-  firstname: 'Marcel',
-  charityid: 1,
-  charityname: 'Amnesty International',
   challengeTitle: '500 pushups',
   challengeStatus: 'pending',
   challengeCreatedAt: '2017-01-01 13:23:44',
   challengeDue: '2017-04-04 13:23:44',
   mediaPrev: 'http://lorempixel.com/400/200/sports/1/PREVIEW',
   minCont: 50,
-  currCont: 30
-
+  currCont: 30,
+  userid: 23,
+  username: 'marcel20',
+  firstname: 'Marcel',
+  charityid: 3,
+  charityname: 'Amnesty International',
 }]
+
+export const createchallenge = {
+  userId: 1,
+  title: '500 pushups',
+  dueDate: '2017-04-04 13:23:44',
+  mediaPrev: 'http://lorempixel.com/400/200/sports/1/PREVIEW',
+  minStake: 50,
+  charityId: 3,
+  tags: ['sexy','yolo']
+}
 
 
 export const fakeuser = [
@@ -92,6 +101,3 @@ export const fakeuser = [
 
    }
 ]
-export function calclevel(karma) {
-  return Math.floor(Math.sqrt(karma))
-}

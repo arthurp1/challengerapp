@@ -3,14 +3,20 @@
   justify-content: space-between;
   align-items: center; }
 
-.card-firstline {
+.datepicker {
+  border: none; }
+
+.card-header {
   display: flex; }
 
-.card-firstline .card-autor {
-  justify-content: flex-start; }
+.card-autor {
+  justify-content: flex-start;
+  color: #00796B !important; }
 
-.card-firstline .duetime {
-  justify-content: flex-end; }
+.duetime {
+  justify-content: flex-end;
+  margin-left: auto;
+  color: #CACACA; }
 
 .card-title {
   font-size: 1.2rem !important; }
@@ -19,14 +25,19 @@
   font-size: 1.1rem;
   border-left: grey 1px; }
 
-.duetime {
-  justify-content: flex-end; }
-
 .collection-item {
   text-align: left; }
 
-.nofocus {
-  display: none; }
+.card-image {
+  position: relative !important; }
+
+.card-reveal {
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  color: #ffffff;
+  background-color: black; }
 
 body {
   font-size: 0.9rem;

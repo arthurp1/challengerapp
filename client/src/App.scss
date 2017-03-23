@@ -4,11 +4,9 @@ $darkblue: #293F54;
 $lightblue: #3398DC;
 $grey1: #303030;
 $purple1: #A554C0;
-$text1: #FFFFFF;
+$text: #CACACA;
 $primary: #00838f;
-
 $teal:   #00796B;
-
 $primary-color-dark:   #E64A19;
 $primary-color:        #FF5722;
 $primary-color-light:  #FFCCBC;
@@ -22,16 +20,24 @@ $divider-color:        #BDBDBD;
  display: flex;
  justify-content: space-between;
  align-items: center;
-
 }
-.card-firstline {
+
+.datepicker {
+  border: none;
+}
+
+.card-header {
   display: flex;
-  .card-autor {
-  justify-content: flex-start;
-  }
-  .duetime {
-    justify-content: flex-end;
-  }
+}
+
+.card-autor {
+justify-content: flex-start;
+color: $teal !important;
+}
+.duetime {
+  justify-content: flex-end;
+  margin-left: auto;
+  color: $text;
 }
 .card-title {
   font-size: 1.2rem !important;
@@ -42,18 +48,24 @@ $divider-color:        #BDBDBD;
   border-left: grey 1px;
 }
 
-.duetime {
-  justify-content: flex-end;
-}
-
 
 .collection-item {
  text-align: left;
 }
 
-.nofocus {
-  display: none;
+.card-image {
+  position: relative !important;
 }
+.card-reveal{
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  color: #ffffff;
+  background-color: black;
+  // background-color: rgba(0,0,0,1) !important;
+}
+
 
 body {
   font-size: 0.9rem;
