@@ -16,6 +16,30 @@ $primary-text-color:   #212121;
 $secondary-text-color: #757575;
 $divider-color:        #BDBDBD;
 
+
+.image-upload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10px;
+  width: 100%;
+  height: 60px;
+  background-color: $text;
+  color: white !important;
+  cursor: pointer;
+  &:hover {
+    color: $teal;
+  }
+  input {
+    display: none;
+  }
+  div, i {
+    cursor: pointer;
+  }
+
+}
+
 .card-footer {
  display: flex;
  justify-content: space-between;

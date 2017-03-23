@@ -27,7 +27,7 @@ class Challenge extends Component {
     console.log('Props of Challenge')
     let curr_cont = Math.floor(Math.random() * 100) + 1
     let min_cont = 200
-    let challengePercent = ( (curr_cont / min_cont) * 100 ) + '%'
+    let challengePercent = Math.floor(  (curr_cont / min_cont) * 100 ) + '%'
     let challenge = this.props
     let dueDate = "2017-03-23 23:30"
     function calcTime(duedate) { return moment(duedate,"YYYY-MM-DD HH:mm").endOf('hour').fromNow() }
