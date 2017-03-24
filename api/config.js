@@ -1,6 +1,6 @@
 
 // CLOUDINARY
-//http://cloudinary.com/documentation/node_integration#getting_started_guide
+// http://cloudinary.com/documentation/node_integration#getting_started_guide
 var cloudinary = require('cloudinary');
 
 cloudinary.config({
