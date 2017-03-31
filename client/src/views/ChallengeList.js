@@ -32,7 +32,7 @@ class ChallengeList extends Component {
       return <Challenge key={challenge.id} {...challenge} contribute={this.contribute} />
     });
 
-    return <div className="Page">{list}</div>
+    return <div className="Page collection news-feed">{list}</div>
     }
 }
 

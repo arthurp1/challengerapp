@@ -12,31 +12,6 @@ class Cnew extends Component {
     this.createChallenge = this.createChallenge.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
   }
-  onImageDrop(files) {
-    this.setState({
-      uploadedFile: files[0]
-    });
-
-    this.handleImageUpload(files[0]);
-  }
-
-  handleImageUpload(file) {
-   let upload = axios.post(CLOUDINARY_UPLOAD_URL)
-                       .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
-                       .field('file', file);
-
-   upload.end((err, response) => {
-     if (err) {
-       console.error(err);
-     }
-
-     if (response.body.secure_url !== '') {
-       this.setState({
-         uploadedFileCloudinaryUrl: response.body.secure_url
-       });
-     }
-   });
- }
 
   onInputChange(event) {
     this.setState( { [event.target.name]: event.target.value })
@@ -70,19 +45,6 @@ class Cnew extends Component {
       <div className="Page">
         <div className="Section">
             <form className="form" encType="multipart/form-data">
-              <Dropzone
-               multiple={false}
-               accept="image/*"
-               onDrop={this.onImageDrop.bind(this)}>
-               <p>Drop an image or click to select a file to upload.</p>
-             </Dropzone>
-
-             <div>{this.state.uploadedFileCloudinaryUrl === '' ? null
-               : <div>
-                    <p>{this.state.uploadedFile.name}</p>
-                    <img src={this.state.uploadedFileCloudinaryUrl} />
-                  </div>}
-             </div>
             <div className="image-upload">
               <label htmlFor="file-input">
                 <i className="material-icons">photo_camera</i>

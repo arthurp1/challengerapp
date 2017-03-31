@@ -6,15 +6,11 @@ class ChallengeItem extends Component {
     let challengePercent = ( (23 / 183) * 100 ) + '%'
     let challenge = this.props
     return <div key={challenge.id} className="collection-item">
-
               <div className="collection-author"> {challenge.title}</div>
                 <div className="collection-content">
-                      <p>{challenge.contribute(1, challenge.id, 23)}<small> backers</small></p>
+                      <p><small> backers</small></p>
                 </div>
-                <div className="progress">
-                  <div className="determinate" style={{ width: challengePercent}}></div>
-                </div>
-          </div>
+              </div>
   }
 }
 

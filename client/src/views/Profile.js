@@ -25,7 +25,7 @@ class Profile extends Component {
       console.log(user)
       let karmaexp = 2400
       let karma = calcLvl(karmaexp)
-      ( <div className="user-profile Page">
+      return ( <div className="user-profile Page">
           <img className="img-circle" src={user.picture.large} alt={user.name.first} />
           <div className="user-name"><h3>{user.login.username}</h3> </div>
           <div className="panel panel-default">

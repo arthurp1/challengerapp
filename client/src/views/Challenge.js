@@ -32,25 +32,34 @@ class Challenge extends Component {
     let dueDate = "2017-03-23 23:30"
     function calcTime(duedate) { return moment(duedate,"YYYY-MM-DD HH:mm").endOf('hour').fromNow() }
     return <div key={challenge.id} className="card">
+              <div className="card-content">
+                <div className="card-header">
+                  <img className="card-avatar img-circle" src={'https://placeimg.com/400/225/people/' + challenge.id }/>
+                  <div className="card-author"> {challenge.username}</div>
+                  <div className="card-duetime">{calcTime(dueDate)}</div>
+                </div>
+              </div>
               <div className="card-image">
                 <div className="card-reveal">Overlap of image</div>
                 <img src={ 'https://placeimg.com/400/225/people/' + challenge.id } alt={challenge.title} />
               </div>
               <div className="card-content">
-                <div className="card-header">
-                  <div className="card-author"> {challenge.username}</div>
-                  <div className="duetime">{calcTime(dueDate)}</div>
-                </div>
+
                 <div className="card-title">{challenge.title}</div>
+                <div className="progress">
+                  <div className="determinate" style={{ width: challengePercent}}></div>
+                </div>
                 <div className="card-footer">
                   <button className="btn btn-default" onClick={() => challenge.contribute(23, challenge.id, 1)}>Back $1</button>
-                  <div className="totalContributors">{challengePercent}<span className="subtext"> backed</span></div>
-                  <div className="minContributions">${curr_cont}<span className="subtext"> collected</span></div>
+                  <div className="totalContributors">{challengePercent}
+                    <div className="subtext"> backed</div>
+                  </div>
+                  <div className="minContributions">${curr_cont}
+                    <div className="subtext"> collected</div>
+                  </div>
                 </div>
               </div>
-              <div className="progress">
-                <div className="determinate" style={{ width: challengePercent}}></div>
-              </div>
+
           </div>
   }
 }
